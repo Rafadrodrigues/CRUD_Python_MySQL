@@ -1,9 +1,11 @@
-#Classe pessoa é uma classe abstrata que vai servir de herança para outras classes.
+#Classe pessoa é uma classe que vai servir de herança para outras classes.
+from classSistema import Sistema
+
 class Pessoa:
 
-    def __init__(self,nome,endereco,email,cpf,telefone) -> None:
-        self._nome = nome
-        self._endereco = endereco
-        self._email = email
-        self._cpf = cpf
-        self._telefone = telefone
+    def __init__(self) -> None:
+        self._nome = None
+        self._endereco = None
+        self._email = None
+        self._cpf = None
+        self._telefone = None

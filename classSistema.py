@@ -1,7 +1,8 @@
 from classColaboradores import Colaboradores
-#from classCliente import Cliente
+from classCliente import Cliente
+import file_sql
 
-class Sistema(Colaboradores,):
+class Sistema(Colaboradores,Cliente):
 
     def __init__(self) -> None:
         self._colaboradores = []
@@ -9,10 +10,9 @@ class Sistema(Colaboradores,):
         self._clientes=[]
         self._material=[]
     
+    #Funcoes responsável por realizar atualizações na base de dados
     def incluirColaborador(self,colaborador):
-        colaborador = Colaboradores()
-        self._colaboradores = colaborador
-        
+        pass
     def incluirCliente(self):
         pass
     def realizarVenda(self):

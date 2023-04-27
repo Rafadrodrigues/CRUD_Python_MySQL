@@ -1,14 +1,12 @@
 from classPessoa import Pessoa
 
-class Colaboradores(Pessoa):
+class Cliente(Pessoa):
 
-    def __init__(self,nome,endereco,email,cpf,telefone,login,senha) -> None:
-        super().__init__(nome,endereco,email,cpf,telefone,login,senha)
-        self._login = None
-        self._senha = None
-
-#Métodos getter e setter dos Colaboradores
-    @property
+    def __init__(self,nome,endereco,email,cpf,telefone) -> None:
+        super().__init__(nome,endereco,email,cpf,telefone)
+    
+    #Métodos para inserir/alterar o dados do Cliente
+    property
     def _nome(self):
         return self._nome
     @_nome.setter
@@ -36,18 +34,6 @@ class Colaboradores(Pessoa):
     def _telefone(self,telefone):
         self._telefone = telefone
 
-    @property   
-    def _login(self):
-        return self._login
-    @_login.setter
-    def _login(self,login):
-        self._login = login
-
-    @property   
-    def _senha(self):
-        return self._senha
-    @_senha.setter
-    def _senha(self,senha):
-        self._senha = senha
-
-
+    #Imprimir informações
+    def InfoCliente(self,):
+        print(f"Nome:{self.nome}\nEndereço:{self.endereco}\nE-mail:{self.email}\nCPF:{self.cpf}\nTelefone:{self.telefone}")
