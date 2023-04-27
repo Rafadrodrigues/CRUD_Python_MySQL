@@ -1,4 +1,4 @@
-Ferramentas utilizadas.
+#Ferramentas utilizadas.
 Para executar será preciso ter o python instalado em seu PC. 
 Site para baixar o python:https://www.python.org/downloads/
 
