@@ -2,6 +2,7 @@ from classColaboradores import Colaboradores
 from classCliente import Cliente
 import file_sql
 
+#Classe referente analise realizada no banco de dados 
 class Sistema(Colaboradores,Cliente):
 
     def __init__(self) -> None:

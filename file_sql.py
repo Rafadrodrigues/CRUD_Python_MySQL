@@ -37,7 +37,6 @@ conexao.close()
 # resultado = cursor.fetchall() # ler o banco de dados
 # print(resultado)
 
-
 # UPDATE
 # nome_produto = "todynho"
 # valor = 6
