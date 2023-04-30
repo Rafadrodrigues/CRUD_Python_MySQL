@@ -34,21 +34,21 @@ class Venda:
         self._valorTotal = valorTotal
     
     #Funcao responsável por gerar nota
-    def gerarNota(self):
-        material_vendido = Material()
-        info_cliente = Cliente()
+    def gerarNota(self,Material,Cliente):
         
-        escolha = input("Deseja nome e CPF na nota? S/N")
+        escolha = input("Deseja nome e CPF na nota? S/N: ")
 
         if escolha.capitalize() == "S":
-            print(f"Vendidos {material_vendido.quantidade()} quantidades do {material_vendido.nome()}\
-            por {material_vendido.preco()}.\nNome cliente:{info_cliente.nome()} CPF:{info_cliente.cpf()}\n\
-            Data:{self._data}.\nValor total da venda:{self._valorTotal}")
+            print(f"Vendidos {Material.quantidade} quantidades de {Material.nome} por {Material.preco}.\
+            \nNome cliente:{Cliente.nome} CPF:{Cliente.cpf}\
+            \nData:{self._data}.\nValor total da venda:{self._valorTotal}")
         else:
-            print(f"Vendidos {material_vendido.quantidade()} quantidades do {material_vendido.nome()}\
-            por {material_vendido.preco()}.\nData:{self._data}.\nValor total da venda:{self._valorTotal}")
+            print(f"Vendidos {Material.quantidade} quantidades do {Material.nome} por {Material.preco}.\
+            \nData:{self._data}.\nValor total da venda:{self._valorTotal}")
 
-        
+print("Loja Construção LTDA\n" + 20 * "-")
+novo_cliente = Cliente("Rafael"," ","rafa@hotmail.com",121,33)
+nome = Material("Porca",20,1200," ","20/10/2021","Ponto mágico")
 data = Venda(300)
 
-print(data._data)
+print(data.gerarNota(nome,novo_cliente))

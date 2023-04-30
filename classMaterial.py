@@ -51,4 +51,3 @@ class Material:
     def fornecedor(self,fornecedor):
         self._fornecedor = fornecedor
 
-nome = Material("Rafael",20,1200,"Porca","20/10/2021","Ponto mágico")
