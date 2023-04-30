@@ -1,6 +1,6 @@
 from classMaterial import Material
 from classCliente import Cliente
-from datetime import datetime, timedelta
+from datetime import datetime
 import pytz
 
 #Classe responsável pelo vendas realizada 
@@ -13,24 +13,24 @@ class Venda:
         horario_BR = datetime.now(fuso_BR)
         return horario_BR.strftime('%d/%m/%y %H:%M:%S')
 
-    def __init__(self) -> None:
+    def __init__(self,valorTotal) -> None:
         self._idVenda = ""
         self._data = Venda._data_hora()
-        self._valorTotal = None
+        self._valorTotal = valorTotal
 
     #Fornecendo caracteristica das vendas por meio getter e setter
     @property
-    def _idVenda(self):
+    def idVenda(self):
         return self._idVenda
-    @_idVenda.setter
-    def _idVenda(self,idVenda):
+    @idVenda.setter
+    def idVenda(self,idVenda):
         self._idVenda = idVenda
         
     @property
-    def _valorTotal(self):
+    def valorTotal(self):
         return self._valorTotal
-    @_valorTotal.setter
-    def _valorTotal(self,valorTotal):
+    @valorTotal.setter
+    def valorTotal(self,valorTotal):
         self._valorTotal = valorTotal
     
     #Funcao responsável por gerar nota
@@ -49,3 +49,6 @@ class Venda:
             por {material_vendido.preco()}.\nData:{self._data}.\nValor total da venda:{self._valorTotal}")
 
         
+data = Venda(300)
+
+print(data._data)

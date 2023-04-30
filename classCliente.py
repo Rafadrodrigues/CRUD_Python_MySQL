@@ -35,6 +35,10 @@ class Cliente(Pessoa):
         self._telefone = telefone
 
     #Imprimir informações
-    def InfoCliente(self,):
-        print(f"Nome:{self._nome}\nEndereço:{self._endereco}\nE-mail:{self._email}\n\
-            CPF:{self._cpf}\nTelefone:{self._telefone}")
+    def infoCliente(self):
+        print(f"Seus dados:Nome:{self._nome}\nEndereço:{self._endereco}\nE-mail:{self._email}\n\
+        CPF:{self._cpf}\nTelefone:{self._telefone}")
+        
+novo_cliente = Cliente("Rafael","Quatro Vintens","rafarodrigues919@gmail.com",12805960661,33998016559)
+
+novo_cliente.infoCliente()

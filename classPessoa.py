@@ -1,6 +1,4 @@
 #Classe pessoa é uma classe que vai servir de herança para outras classes.
-from classSistema import Sistema
-
 class Pessoa:
 
     def __init__(self,nome,endereco,email,cpf,telefone) -> None:
