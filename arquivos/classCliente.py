@@ -2,7 +2,7 @@ from classPessoa import Pessoa
 
 class Cliente(Pessoa):
 
-    def __init__(self,nome,endereco,email,cpf,telefone) -> None:
+    def __init__(self,nome:str,endereco:str,email:str,cpf:str,telefone:int) -> None:
         super().__init__(nome,endereco,email,cpf,telefone)
     
     #Métodos para inserir/alterar o dados do Cliente
@@ -36,5 +36,5 @@ class Cliente(Pessoa):
 
     #Imprimir informações
     def infoCliente(self):
-        print(f"Seus dados:Nome:{self._nome}\nEndereço:{self._endereco}\nE-mail:{self._email}\n\
+        print(f"Seus dados:\nNome:{self._nome}\nEndereço:{self._endereco}\nE-mail:{self._email}\n\
         CPF:{self._cpf}\nTelefone:{self._telefone}")

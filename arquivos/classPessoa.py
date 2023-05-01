@@ -1,7 +1,7 @@
 #Classe pessoa é uma classe que vai servir de herança para outras classes.
 class Pessoa:
 
-    def __init__(self,nome,endereco,email,cpf,telefone) -> None:
+    def __init__(self,nome:str,endereco:str,email:str,cpf:str,telefone:int) -> None:
         self._nome = nome
         self._endereco = endereco
         self._email = email

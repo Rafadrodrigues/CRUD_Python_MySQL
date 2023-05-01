@@ -2,12 +2,19 @@ from classPessoa import Pessoa
 
 class Colaboradores(Pessoa):
 
-    def __init__(self,nome,endereco,email,cpf,telefone,login,senha) -> None:
+    def __init__(self,nome:str,endereco:str,email:str,cpf:str,telefone:int,login,senha) -> None:
         super().__init__(nome,endereco,email,cpf,telefone,login,senha)
         self._login = login
         self._senha = senha
 
 #Métodos getter e setter dos Colaboradores
+    @property   
+    def login(self):
+        return self._login
+    @login.setter
+    def login(self,login):
+        self._login = login
+        
     @property   
     def senha(self):
         return self._senha

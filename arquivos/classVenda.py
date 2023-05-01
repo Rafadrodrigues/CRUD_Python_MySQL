@@ -13,7 +13,7 @@ class Venda:
         horario_BR = datetime.now(fuso_BR)
         return horario_BR.strftime('%d/%m/%y %H:%M:%S')
 
-    def __init__(self,valorTotal) -> None:
+    def __init__(self,valorTotal:float) -> None:
         self._idVenda = ""
         self._data = Venda._data_hora()
         self._valorTotal = valorTotal
@@ -50,5 +50,3 @@ print("Loja Construção LTDA\n" + 20 * "-")
 novo_cliente = Cliente("Rafael"," ","rafa@hotmail.com",121,33)
 nome = Material("Porca",20,1200," ","20/10/2021","Ponto mágico")
 data = Venda(300)
-
-print(data.gerarNota(nome,novo_cliente))
