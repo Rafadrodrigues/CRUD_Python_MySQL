@@ -1,7 +1,7 @@
 #Classe responsável por atribuir definir materiais no sistema
 class Material:
 
-    def __init__(self,nome:str,quantidade:int,preco:float,especificacao:int,datafabricacao:str,fornecedor:str) -> None:
+    def __init__(self,nome:str,quantidade:int,preco:float,especificacao:str,datafabricacao:str,fornecedor:str) -> None:
         self._nome = nome
         self._quantidade = quantidade
         self._preco = preco
