@@ -1,29 +1,33 @@
 from classCliente import Cliente
 from classMaterial import Material
 from classVenda import Venda
-from classColaboradores import Colaboradores
+from classFuncionarios import Funcionario
 import mysql.connector
 
 #Conectamos o python com banco de dados
-def iniciarConexao(conexao):
-    conexao = mysql.connector.connect(
-    host='localhost', 
-    database='materialconstrucao', 
-    user='root', 
-    password='**'
-    )
-    return conexao
+def iniciarConexao():
+    try:
+        conexao = mysql.connector.connect(
+        host='localhost', 
+        database='materialconstrucao', 
+        user='root', 
+        password='88554663'
+        )
+        return conexao
+    except:
+        raise ValueError("Conexão não estabelecida.")
 
 #Inserindo colaborador na base de dados
 def colaborador(colaborador):
 
-    #Criando a uma conexao 
-    conexao = iniciarConexao(conexao)
+    #Criando a uma conexao
+
+    conexao = iniciarConexao()
 
     # Criação do cursor
     cursor = conexao.cursor()
 
-    colaborador = Colaboradores(input("Insira seu nome: "),
+    colaborador = Funcionario(input("Insira seu nome: "),
         input("Insira seu endereco: "), 
         input("Insira seu e-mail: "),
         input("Insira seu cpf: "), 
@@ -49,8 +53,9 @@ def colaborador(colaborador):
 
 #Inserindo cliente na base de dados
 def cliente(cliente):
+
     #Criando a uma conexao 
-    conexao = iniciarConexao(conexao)
+    conexao = iniciarConexao()
 
     # Criação do cursor
     cursor = conexao.cursor()
@@ -80,10 +85,12 @@ def cliente(cliente):
         print("Ação realizada com sucesso.")
         cursor.close()
         conexao.close()
+        
 #Inserindo venda na base de dados
 def venda(venda):
+
     #Criando a uma conexao 
-    conexao = iniciarConexao(conexao)
+    conexao = iniciarConexao()
 
     # Criação do cursor
     cursor = conexao.cursor()
@@ -99,16 +106,18 @@ def venda(venda):
     print("Ação realizada com sucesso.")
     cursor.close()
     conexao.close()
+
 #Cancelando venda na base de dados
 def cancelaVenda():
     #Criando a uma conexao 
-    conexao = iniciarConexao(conexao)
+    conexao = iniciarConexao()
 
     # Criação do cursor
     cursor = conexao.cursor()
 
     #Cancelando uma venda na base de dados
     nome_produto = input("Nome produto: ")
+
     comando = f'DELETE FROM table_vendas WHERE nome_produto = "{nome_produto}"'
     cursor.execute(comando)
     # edita o banco de dados
@@ -117,10 +126,11 @@ def cancelaVenda():
     print("Ação realizada com sucesso.")
     cursor.close()
     conexao.close()
+
 #Consultando material na base de dados
 def vizualizarVenda():
     #Criando a uma conexao 
-    conexao = iniciarConexao(conexao)
+    conexao = iniciarConexao()
 
     # Criação do cursor
     cursor = conexao.cursor()
@@ -134,10 +144,12 @@ def vizualizarVenda():
     print("Ação realizada com sucesso.")
     cursor.close()
     conexao.close()
+
 #Inserindo material na base de dados
 def material(material):
+
     #Criando a uma conexao 
-    conexao = iniciarConexao(conexao)
+    conexao = iniciarConexao()
 
     # Criação do cursor
     cursor = conexao.cursor()

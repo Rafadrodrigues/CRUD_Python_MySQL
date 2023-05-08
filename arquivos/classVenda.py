@@ -28,7 +28,7 @@ class Venda:
     def valorTotal(self):
         return self._valorTotal
     @valorTotal.setter
-    def valorTotal(self,valorTotal):
+    def valorTotal(self,valorTotal:float):
         self._valorTotal = valorTotal
     
     #Funcao responsável por gerar nota

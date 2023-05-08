@@ -13,41 +13,41 @@ class Material:
     def nome(self):
         return self._nome
     @nome.setter
-    def nome(self,nome):
+    def nome(self,nome:str):
         self._nome = nome
     
     @property   
     def quantidade(self):
         return self._quantidade
     @quantidade.setter
-    def quantidade(self,quantidade):
+    def quantidade(self,quantidade:int):
         self._quantidade = quantidade
 
     @property   
     def preco(self):
         return self._preco
     @preco.setter
-    def preco(self,preco):
+    def preco(self,preco:float):
         self._preco = preco
     
     @property   
     def especificacao(self):
         return self._especificacao
     @especificacao.setter
-    def especificacao(self,especificacao):
+    def especificacao(self,especificacao:str):
         self._especificacao = especificacao
 
     @property   
     def datafabricacao(self):
         return self._datafabricacao
     @datafabricacao.setter
-    def datafabricacao(self,datafabricacao):
+    def datafabricacao(self,datafabricacao:str):
         self._datafabricacao = datafabricacao
 
     @property   
     def fornecedor(self):
         return self._fornecedor
     @fornecedor.setter
-    def fornecedor(self,fornecedor):
+    def fornecedor(self,fornecedor:str):
         self._fornecedor = fornecedor
 
