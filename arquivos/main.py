@@ -8,12 +8,12 @@ import os
 
 print("Seja bem-vindo a Constrular LTDA\n" + 35 * "-"+"\nComo posso ajudar?")
 #Mostrando as opções
-print("01 - Cadastrar Funcionário.\n02 - Cadastrar Cliente.\n03 - Registrar Venda.\n04 - Cadastrar Material.\n05 - Consultar Vendas.\n06 - Cancelar Venda. \n07 - Sair")
+print("01 - Cadastrar Funcionário.\n02 - Cadastrar Cliente.\n03 - Registrar Venda.\n04 - Cadastrar Material.\n05 - Consultar Vendas.\n06 - Cancelar Venda. \n07 - Remover funcionário. \n08- Sair.")
 
 #Funcao responsável por direcionar a escolha feita pelo usuário
 def escolherOpcao(opcao):
     if opcao == "01":
-        Sistema.incluirColaborador(Funcionario)
+        Sistema.incluirFuncionario(Funcionario)
     elif opcao == "02":
         Sistema.incluirCliente(Cliente)
     elif opcao == "03":
@@ -25,6 +25,8 @@ def escolherOpcao(opcao):
     elif opcao == "06":
         Sistema.cancelarVenda()
     elif opcao == "07":
+        Sistema.desativaFuncionario()
+    elif opcao == "08":
         quit()
 
 #Caso a opcão seja selecionada, a função vai ser chamada e realizada

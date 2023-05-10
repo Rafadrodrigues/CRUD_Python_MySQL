@@ -18,7 +18,7 @@ def iniciarConexao():
         raise ValueError("Conexão não estabelecida.")
 
 #Inserindo colaborador na base de dados
-def colaborador(colaborador):
+def funcionario(colaborador):
 
     #Criando a uma conexao
 
@@ -179,5 +179,26 @@ def material(material):
         #Atualiza o banco de dados
         print("Ação realizada com sucesso.")
 
+        cursor.close()
+        conexao.close()
+
+    #Removendo funcionario na base de dados
+def removerFuncionario():
+
+        #Criando a uma conexao 
+        conexao = iniciarConexao()
+
+        # Criação do cursor
+        cursor = conexao.cursor()
+
+        #Cancelando uma venda na base de dados
+        cpf_funcionario = input("Nome produto: ")
+
+        comando = f'DELETE FROM table_colaborador WHERE cpf_cola = "{cpf_funcionario}"'
+        cursor.execute(comando)
+        # edita o banco de dados
+        conexao.commit()
+        #Atualiza o banco de dados
+        print("Ação realizada com sucesso.")
         cursor.close()
         conexao.close()

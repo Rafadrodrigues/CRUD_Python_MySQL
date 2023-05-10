@@ -1,4 +1,5 @@
 from classFuncionarios import Funcionario
+from crudSistema import removerFuncionario
 
 class Admin(Funcionario):
     

@@ -43,3 +43,7 @@ class Venda:
         else:
             print(f"Vendidos {Material.quantidade} quantidades do {Material.nome} por {Material.preco}.\
             \nData:{self._data}.\nValor total da venda:{self._valorTotal}")
+    
+    #Essa é uma funcionalidade que quem faz é o funcionário
+    def balancoMensal(self):
+        pass
