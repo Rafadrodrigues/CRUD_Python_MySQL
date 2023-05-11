@@ -8,6 +8,7 @@ import os
 
 print("Seja bem-vindo a Constrular LTDA\n" + 35 * "-"+"\nComo posso ajudar?")
 #Mostrando as opções
+
 print("01 - Cadastrar Funcionário.\n02 - Cadastrar Cliente.\n03 - Registrar Venda.\n04 - Cadastrar Material.\n05 - Consultar Vendas.\n06 - Cancelar Venda. \n07 - Remover funcionário. \n08- Sair.")
 
 #Funcao responsável por direcionar a escolha feita pelo usuário
@@ -33,7 +34,10 @@ def escolherOpcao(opcao):
 if __name__=="__main__":
     #Inserindo as opções
     while True:
-        opcao = input("Digite a opção desejada: ")
-        os.system("cls")
-        escolherOpcao(opcao)
+        if Sistema.efetuarLogin() == True:
+            opcao = input("Digite a opção desejada: ")
+            os.system("cls")
+            escolherOpcao(opcao)
+        else:
+            print('Acesso negano')
 
