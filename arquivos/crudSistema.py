@@ -11,7 +11,7 @@ def iniciarConexao():
         host='localhost', 
         database='materialconstrucao', 
         user='root', 
-        password='88554663'
+        password='**'
         )
         return conexao
     except:
