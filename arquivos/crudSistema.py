@@ -4,6 +4,7 @@ from classVenda import Venda
 from classFuncionarios import Funcionario
 import mysql.connector
 
+
 #Conectamos o python com banco de dados
 def iniciarConexao():
     try:

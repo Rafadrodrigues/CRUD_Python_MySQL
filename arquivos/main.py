@@ -5,6 +5,7 @@ from classMaterial import Material
 from classSistema import Sistema
 from classVenda import Venda
 import os
+import keyboard
 
 print("Seja bem-vindo a Constrular LTDA\n" + 35 * "-"+"\nComo posso ajudar?")
 #Mostrando as opções
