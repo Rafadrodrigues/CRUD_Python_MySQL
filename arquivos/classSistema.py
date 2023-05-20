@@ -29,6 +29,7 @@ class Sistema:
     def realizarVenda(self):
         #Inserindo venda na base de dados
         crudSistema.venda(Venda)
+        Venda.gerarNota(Material,Cliente)
 
     def cancelarVenda(self):
         #Cancelando venda na base de dados

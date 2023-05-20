@@ -5,7 +5,6 @@ from classMaterial import Material
 from classSistema import Sistema
 from classVenda import Venda
 import os
-import keyboard
 
 print("Seja bem-vindo a Constrular LTDA\n" + 35 * "-"+"\nComo posso ajudar?")
 #Mostrando as opções
@@ -31,14 +30,23 @@ def escolherOpcao(opcao):
     elif opcao == "08":
         quit()
 
+def continuar():
+    continuar = input("Deseja continuar: S/N")
+    if continuar.capitalize == 'S':
+        return True
+    else:
+        return False
+
 #Caso a opcão seja selecionada, a função vai ser chamada e realizada
 if __name__=="__main__":
     #Inserindo as opções
     while True:
-        if Sistema.efetuarLogin() == True:
+        if Sistema.efetuarLogin():
             opcao = input("Digite a opção desejada: ")
             os.system("cls")
             escolherOpcao(opcao)
         else:
             print('Acesso negano')
+        continuar()
+
 
