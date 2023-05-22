@@ -25,14 +25,14 @@ class Venda:
         self._idVenda = idVenda
         
     @property
-    def valorTotal(self):
+    def valorTotal(self)-> float:
         return self._valorTotal
     @valorTotal.setter
     def valorTotal(self,valorTotal:float):
         self._valorTotal = valorTotal
     
     #Funcao responsável por gerar nota
-    def gerarNota(self,Material,Cliente):
+    def gerarNota(self,Material,Cliente) -> str:
         
         escolha = input("Deseja nome e CPF na nota? S/N: ")
 

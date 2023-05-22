@@ -10,7 +10,7 @@ class Funcionario(Cliente):
         self._senha = senha
 
     @property
-    def cargo(self):
+    def cargo(self) -> str:
         return self._cargo
     
     @cargo.setter
@@ -18,7 +18,7 @@ class Funcionario(Cliente):
         self._cargo = cargo
 
     @property
-    def salario(self):
+    def salario(self) -> float:
         return self._salario 
     
     @salario.setter
@@ -26,22 +26,12 @@ class Funcionario(Cliente):
         self._salario = salario
 
     @property
-    def usuario(self):
+    def usuario(self) -> str:
         return self._usuario
     
     @usuario.setter
     def usuario(self,usuario:str):
         self._usuario = usuario
-
-    @property
-    def salario(self):
-        return self._salario 
-    
-    @usuario.setter
-    def usuario(self,usuario:str):
-        self._usuario = usuario
-    
-
 
 
 

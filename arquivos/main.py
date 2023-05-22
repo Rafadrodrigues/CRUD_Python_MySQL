@@ -30,7 +30,7 @@ def escolherOpcao(opcao):
     elif opcao == "08":
         quit()
 
-def continuar():
+def continuar() -> bool:
     continuar = input("Deseja continuar: S/N")
     if continuar.capitalize == 'S':
         return True

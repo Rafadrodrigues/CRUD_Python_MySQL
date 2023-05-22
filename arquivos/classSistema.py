@@ -11,7 +11,7 @@ class Sistema:
         pass
 
     #Efetuando login no sistema
-    def efetuarLogin(self,objeto):
+    def efetuarLogin(self,objeto) -> str:
         try:
             Login.logar(objeto)
         except:

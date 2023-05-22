@@ -10,28 +10,28 @@ class Pessoa:
 
     #Getter e setter
     @property
-    def nome(self):
+    def nome(self) -> str:
         return self._nome
     @nome.setter
     def nome(self,nome:str):
         self._nome = nome
     
     @property   
-    def endereco(self):
+    def endereco(self) -> str:
         return self._endereco
     @endereco.setter
     def endereco(self,endereco:str):
         self._endereco = endereco
 
     @property   
-    def cpf(self):
+    def cpf(self) -> str:
         return self._cpf
     @cpf.setter
     def cpf(self,cpf:str):
         self._cpf = cpf
     
     @property   
-    def telefone(self):
+    def telefone(self) -> int:
         return self._telefone
     @telefone.setter
     def telefone(self,telefone:int):

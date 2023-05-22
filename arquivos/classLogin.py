@@ -7,7 +7,7 @@ class Login:
         self._senha = password
 
     @property
-    def password(self):
+    def password(self) -> str:
         return self._passwordo 
     
     @password.setter
@@ -15,7 +15,7 @@ class Login:
         self._password = password
     
     @property
-    def username(self):
+    def username(self) -> str:
         return self._username 
     
     @username.setter
@@ -23,7 +23,7 @@ class Login:
         self._username= username
 
     #Efetua o login do funcionario ou adm
-    def logar(self,objeto):
+    def logar(self,objeto) -> bool:
         if(self._username == objeto._username and self._password == objeto._password):
             return True
         else:

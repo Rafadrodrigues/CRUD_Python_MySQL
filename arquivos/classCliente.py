@@ -9,7 +9,7 @@ class Cliente(Pessoa):
 
     #Métodos getter e setter para a classe
     @property
-    def num_cartao(self):
+    def num_cartao(self) ->int:
         return self._num_cartao
     
     @num_cartao.setter
