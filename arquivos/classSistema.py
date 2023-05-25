@@ -12,10 +12,7 @@ class Sistema:
 
     #Efetuando login no sistema
     def efetuarLogin(self,objeto) -> str:
-        try:
-            Login.logar(objeto)
-        except:
-            return 'Credenciais diferente da permitida'
+        Login.logar(objeto)
         
     #Funcoes responsável por realizar atualizações na base de dados
     def incluirFuncionario(self):

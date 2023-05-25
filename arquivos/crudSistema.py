@@ -2,27 +2,28 @@ from classCliente import Cliente
 from classMaterial import Material
 from classVenda import Venda
 from classFuncionarios import Funcionario
+from classLogin import Login
 import mysql.connector
 
 
 #Conectamos o python com banco de dados
 def iniciarConexao():
-    try:
-        conexao = mysql.connector.connect(
-        host='localhost', 
-        database='materialconstrucao', 
-        user='root', 
-        password='**'
-        )
-        return conexao
-    except:
-        raise ValueError("Conexão não estabelecida.")
+    while True:
+        try:
+            conexao = mysql.connector.connect(
+            host='localhost', 
+            database='materialconstrucao', 
+            user='root', 
+            password='**'
+            )
+            return conexao
+        except:
+            raise ValueError("Conexão não estabelecida.")
 
 #Inserindo colaborador na base de dados
 def funcionario(colaborador):
 
     #Criando a uma conexao
-
     conexao = iniciarConexao()
 
     # Criação do cursor
@@ -183,7 +184,7 @@ def material(material):
         cursor.close()
         conexao.close()
 
-    #Removendo funcionario na base de dados
+#Removendo funcionario na base de dados
 def removerFuncionario():
 
         #Criando a uma conexao 
@@ -203,3 +204,7 @@ def removerFuncionario():
         print("Ação realizada com sucesso.")
         cursor.close()
         conexao.close()
+
+#As credenciais de funcionario e adm serão realizadas para liberar o acesso
+def verificarCredenciais(Login):
+    pass

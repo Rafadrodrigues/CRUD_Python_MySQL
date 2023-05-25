@@ -22,10 +22,12 @@ class Login:
     def username(self,username:str):
         self._username= username
 
-    #Efetua o login do funcionario ou adm
+    #Efetua o login do funcionario ou adm. Para isso é preciso que faça uma verificação no banco de dados
     def logar(self,objeto) -> bool:
-        if(self._username == objeto._username and self._password == objeto._password):
+        if self._username == objeto._username and self._password == objeto._password:
+            print("Login realizado")
             return True
         else:
+            #Caso o usuário insira alguma informação incorreta
+            print("Credenciais incorretas")
             return False
-
