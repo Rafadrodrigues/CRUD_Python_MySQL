@@ -1,33 +1,40 @@
 #Classe que realiza login para utilizar 
+from classSistema import Sistema
 class Login:
 
     #Construtor da classe login
-    def __init__(self, username:str,password:str):
-        self._usuario = username
-        self._senha = password
+    def __init__(self, usuario:str, senha:str):
+        self._usuario = usuario
+        self._senha = senha
 
     @property
-    def password(self) -> str:
-        return self._passwordo 
+    def senha(self) -> str:
+        return self._senha
     
-    @password.setter
-    def password(self,password:str):
-        self._password = password
+    @senha.setter
+    def senha(self,senha:str):
+        self._senha = senha
     
     @property
-    def username(self) -> str:
-        return self._username 
+    def usuario(self) -> str:
+        return self._usuario 
     
-    @username.setter
-    def username(self,username:str):
-        self._username= username
+    @usuario.setter
+    def usuario(self,usuario:str):
+        self._usuario = usuario
 
     #Efetua o login do funcionario ou adm. Para isso é preciso que faça uma verificação no banco de dados
-    def logar(self,objeto) -> bool:
-        if self._username == objeto._username and self._password == objeto._password:
-            print("Login realizado")
-            return True
-        else:
-            #Caso o usuário insira alguma informação incorreta
-            print("Credenciais incorretas")
-            return False
+    # def logar(self,usuario) -> bool:
+    #     #A verificacao é solicita ao sistema, que vê no banco de dados, e depois repassa aqui
+    #     funcionario = Sistema.efetuarLogin()
+    #     while True:
+    #         if usuario.usuario == self._usuario and usuario.senha == self._senha:
+    #             Sistema.efetuarLogin()
+    #             print("Login realizado")
+    #             return True
+    #         else:
+    #             #Caso o usuário insira alguma informação incorreta
+    #             print("Credenciais incorretas,tente novamente.")
+    #             return False
+           
+                    

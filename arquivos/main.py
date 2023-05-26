@@ -4,12 +4,13 @@ from classCliente import Cliente
 from classMaterial import Material
 from classSistema import Sistema
 from classVenda import Venda
+from classLogin import Login
 import os
 
-print("Seja bem-vindo a Constrular LTDA\n" + 35 * "-"+"\nComo posso ajudar?")
-#Mostrando as opções
-
-print("01 - Cadastrar Funcionário.\n02 - Cadastrar Cliente.\n03 - Registrar Venda.\n04 - Cadastrar Material.\n05 - Consultar Vendas.\n06 - Cancelar Venda. \n07 - Remover funcionário. \n08- Sair.")
+def inicio():
+    #Recebendo o usuário e mostrando as opções
+    print("Seja bem-vindo a Constrular LTDA\n" + 35 * "-"+"\nComo posso ajudar?")
+    print("01 - Cadastrar Funcionário.\n02 - Cadastrar Cliente.\n03 - Registrar Venda.\n04 - Cadastrar Material.\n05 - Consultar Vendas.\n06 - Cancelar Venda. \n07 - Remover funcionário. \n08- Sair.")
 
 #Funcao responsável por direcionar a escolha feita pelo usuário
 def escolherOpcao(opcao):
@@ -35,18 +36,26 @@ def continuar() -> bool:
     if continuar.capitalize == 'S':
         return True
     else:
+        print("Sistema finalizado. ")
         return False
 
 #Caso a opcão seja selecionada, a função vai ser chamada e realizada
 if __name__=="__main__":
     #Inserindo as opções
+
+    usuario = Login(
+        input('Insira seu usuário: '),
+        input('Insira sua senha: '),
+        )
+    
     while True:
-        if Sistema.efetuarLogin():
-            opcao = input("Digite a opção desejada: ")
-            os.system("cls")
-            escolherOpcao(opcao)
-        else:
-            print('Acesso negano')
+        #Preciso agora apenas colocar as opções de realizar login que depois vai liberar o acesso ao programa
+        Sistema.efetuarLogin(usuario)
+        os.system("cls")
+        inicio()
+        opcao = input("Digite a opção desejada: ")
+        os.system("cls")
+        escolherOpcao(opcao)
         continuar()
 
 

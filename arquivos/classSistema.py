@@ -2,7 +2,6 @@ from classFuncionarios import Funcionario
 from classCliente import Cliente
 from classVenda import Venda
 from classMaterial import Material
-from classLogin import Login
 import crudSistema
 
 #Classe referente analise realizada no banco de dados 
@@ -10,10 +9,6 @@ class Sistema:
     def __init__(self) -> None:
         pass
 
-    #Efetuando login no sistema
-    def efetuarLogin(self,objeto) -> str:
-        Login.logar(objeto)
-        
     #Funcoes responsável por realizar atualizações na base de dados
     def incluirFuncionario(self):
         #Inserindo colaborador na base de dados
@@ -43,4 +38,10 @@ class Sistema:
     def desativaFuncionario():
         #Removendo funcionário da base de dados
         crudSistema.removerFuncionario()
+
+    def efetuarLogin(Funcionario):
+        #Efetuando login no sistema, mas antes verificando as credenciais
+        crudSistema.verificarCredenciais(Funcionario)
+
+        
     
