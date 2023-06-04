@@ -16,4 +16,7 @@ class Cliente(Pessoa):
     def num_cartao(self,num_cartao:int):
         self._num_cartao = num_cartao
 
+#Um método que o cliente solicita o produto ao funcionário
+    def solicitar_produto(self):
+        pass
 

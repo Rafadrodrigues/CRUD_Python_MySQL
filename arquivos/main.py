@@ -9,7 +9,7 @@ import os
 
 def inicio():
     #Recebendo o usuário e mostrando as opções
-    print("Seja bem-vindo a Constrular LTDA\n" + 35 * "-"+"\nComo posso ajudar?")
+    print("Seja bem-vindo a Constrular LTDA\n" + 35 * "-" + "\nComo posso ajudar?")
     print("01 - Cadastrar Funcionário.\n02 - Cadastrar Cliente.\n03 - Registrar Venda.\n04 - Cadastrar Material.\n05 - Consultar Vendas.\n06 - Cancelar Venda. \n07 - Remover funcionário. \n08- Sair.")
 
 #Funcao responsável por direcionar a escolha feita pelo usuário
@@ -41,16 +41,16 @@ def continuar() -> bool:
 
 #Caso a opcão seja selecionada, a função vai ser chamada e realizada
 if __name__=="__main__":
+    
     #Inserindo as opções
-
-    usuario = Login(
+    Login(
         input('Insira seu usuário: '),
         input('Insira sua senha: '),
-        )
+    )
     
     while True:
         #Preciso agora apenas colocar as opções de realizar login que depois vai liberar o acesso ao programa
-        Sistema.efetuarLogin(usuario)
+        Sistema.efetuarLogin(Login)
         os.system("cls")
         inicio()
         opcao = input("Digite a opção desejada: ")

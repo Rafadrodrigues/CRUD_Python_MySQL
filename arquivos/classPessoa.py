@@ -1,5 +1,8 @@
 #Classe pessoa é uma classe que vai servir de herança para outras classes.
-class Pessoa:
+from abc import ABC,abstractclassmethod
+
+#Uma classe abstrata
+class Pessoa(ABC):
     #Atributos da classe
     def __init__(self,nome:str,endereco:str,email:str,cpf:str,telefone:int) -> None:
         self._nome = nome

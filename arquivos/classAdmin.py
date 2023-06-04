@@ -8,3 +8,11 @@ class Admin(Funcionario):
         super().__init__(nome,endereco,email,cpf,telefone,usuario,senha)
     
 
+    def adicionar_funcionario(self):
+        pass
+
+    def remover_funcionario(self):
+        pass
+
+    def lancar_diaria(self):
+        pass

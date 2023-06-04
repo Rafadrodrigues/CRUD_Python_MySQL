@@ -13,17 +13,9 @@ class Funcionario(Cliente):
     def cargo(self) -> str:
         return self._cargo
     
-    @cargo.setter
-    def cargo(self,cargo:str):
-        self._cargo = cargo
-
     @property
     def salario(self) -> float:
         return self._salario 
-    
-    @salario.setter
-    def salario(self,salario:float):
-        self._salario = salario
 
     @property
     def usuario(self) -> str:
@@ -33,5 +25,9 @@ class Funcionario(Cliente):
     def usuario(self,usuario:str):
         self._usuario = usuario
 
+    def realizar_venda(self):
+        pass
 
+    def relatorio_de_venda(self):
+        pass
 

@@ -5,7 +5,10 @@ from classMaterial import Material
 import crudSistema
 
 #Classe referente analise realizada no banco de dados 
+#Eu posso fazer uma coisinha diferente, eu posso criar alguns métodos que são incluir, editar e remover, o que mudaria seria o tipo
+
 class Sistema:
+
     def __init__(self) -> None:
         pass
 
@@ -39,9 +42,9 @@ class Sistema:
         #Removendo funcionário da base de dados
         crudSistema.removerFuncionario()
 
-    def efetuarLogin(Funcionario):
+    def efetuarLogin(Login):
         #Efetuando login no sistema, mas antes verificando as credenciais
-        crudSistema.verificarCredenciais(Funcionario)
+        crudSistema.verificarCredenciais(Login)
 
         
     
