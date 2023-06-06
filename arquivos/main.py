@@ -5,6 +5,7 @@ from classMaterial import Material
 from classSistema import Sistema
 from classVenda import Venda
 from classLogin import Login
+import crudSistema
 import os
 
 def inicio():
@@ -32,22 +33,31 @@ def escolherOpcao(opcao):
         quit()
 
 def continuar() -> bool:
-    continuar = input("Deseja continuar: S/N")
+    continuar = input("Deseja continuar S/N: ")
     if continuar.capitalize == 'S':
         return True
     else:
         print("Sistema finalizado. ")
         return False
 
+def liberar_acesso():
+    #Realizando login
+    while True:
+        Login(
+            input('Insira seu usuário: '),
+            input('Insira sua senha: '),
+        )
+        liberaracao = crudSistema.verificarCredenciais(Login)
+        if liberaracao != True:
+            continue
+    
 #Caso a opcão seja selecionada, a função vai ser chamada e realizada
 if __name__=="__main__":
-    
-    #Inserindo as opções
-    Login(
-        input('Insira seu usuário: '),
-        input('Insira sua senha: '),
-    )
-    
+
+    #Verificando se o login está correto para prosseguir no sistema
+    liberar_acesso()
+
+    #Inicializando as opções
     while True:
         #Preciso agora apenas colocar as opções de realizar login que depois vai liberar o acesso ao programa
         Sistema.efetuarLogin(Login)
