@@ -1,12 +1,12 @@
 #Classe responsável por atribuir definir materiais no sistema
 class Material:
 
-    def __init__(self,nome:str,quantidade:int,preco:float,especificacao:str,datafabricacao:str,fornecedor:str) -> None:
+    def __init__(self,nome:str,quantidade:int,preco:float,especificacao:str,data_fabricacao:str,fornecedor:str) -> None:
         self._nome = nome
         self._quantidade = quantidade
         self._preco = preco
         self._especificacao = especificacao
-        self._datafabricacao = datafabricacao
+        self._data_fabricacao = data_fabricacao
         self._fornecedor = fornecedor
 
     @property
@@ -38,11 +38,11 @@ class Material:
         self._especificacao = especificacao
 
     @property   
-    def datafabricacao(self) -> str:
-        return self._datafabricacao
-    @datafabricacao.setter
-    def datafabricacao(self,datafabricacao:str):
-        self._datafabricacao = datafabricacao
+    def data_fabricacao(self) -> str:
+        return self._data_fabricacao
+    @data_fabricacao.setter
+    def data_fabricacao(self,data_fabricacao:str):
+        self.data_fabricacao = data_fabricacao
 
     @property   
     def fornecedor(self) -> str:

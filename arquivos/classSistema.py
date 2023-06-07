@@ -2,7 +2,7 @@ from classFuncionarios import Funcionario
 from classCliente import Cliente
 from classVenda import Venda
 from classMaterial import Material
-import crudSistema
+import Banco_de_dados
 
 #Classe referente analise realizada no banco de dados 
 #Eu posso fazer uma coisinha diferente, eu posso criar alguns métodos que são incluir, editar e remover, o que mudaria seria o tipo
@@ -13,38 +13,38 @@ class Sistema:
         pass
 
     #Funcoes responsável por realizar atualizações na base de dados
-    def incluirFuncionario(self):
+    def incluir_funcionario(self):
         #Inserindo colaborador na base de dados
-        crudSistema.funcionario(Funcionario) 
+        Banco_de_dados.funcionario(Funcionario) 
 
-    def incluirCliente(self):
+    def incluir_cliente(self):
         #Inserindo cliente na base de dados
-        crudSistema.cliente(Cliente)
-            
-    def realizarVenda(self):
-        #Inserindo venda na base de dados
-        crudSistema.venda(Venda)
-        Venda.gerarNota(Material,Cliente)
-
-    def cancelarVenda(self):
-        #Cancelando venda na base de dados
-        crudSistema.cancelaVenda(Venda)
-
-    def consultarVendas():
-        #Consultando material na base de dados
-        crudSistema.vizualizarVenda()
-
-    def incluirMaterial(self):
-        #Inserindo material na base de dados
-        crudSistema.material(Material)
+        Banco_de_dados.cliente(Cliente)
     
-    def desativaFuncionario():
-        #Removendo funcionário da base de dados
-        crudSistema.removerFuncionario()
+    def realizar_venda(self):
+        #Inserindo venda na base de dados
+        Banco_de_dados.venda(Venda)
+        Venda.gerar_nota(Material,Cliente)
 
-    def efetuarLogin(Login):
+    def cancelar_venda(self):
+        #Cancelando venda na base de dados
+        Banco_de_dados.cancela_venda(Venda)
+
+    def consultar_vendas():
+        #Consultando material na base de dados
+        Banco_de_dados.vizualizar_venda()
+
+    def incluir_material(self):
+        #Inserindo material na base de dados
+        Banco_de_dados.material(Material)
+
+    def desativa_funcionario():
+        #Removendo funcionário da base de dados
+        Banco_de_dados.remover_funcionario()
+        
+    def efetuar_login(Login):
         #Efetuando login no sistema, mas antes verificando as credenciais
-        crudSistema.verificarCredenciais(Login)
+        Banco_de_dados.verificar_credenciais(Login)
 
         
     

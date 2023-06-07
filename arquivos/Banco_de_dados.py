@@ -2,12 +2,13 @@ from classCliente import Cliente
 from classMaterial import Material
 from classVenda import Venda
 from classFuncionarios import Funcionario
+from classLogin import Login
 from time import sleep
 import os
 import mysql.connector
 
 #Conectamos o python com banco de dados
-def iniciarConexao():
+def iniciar_conexao():
     #Talvez eu deva tirar esse try
     while True:
         try:
@@ -34,41 +35,45 @@ def funcionario(colaborador):
                 input("Insira seu e-mail: "),
                 input("Insira seu cpf: "), 
                 int(input("Insira seu telefone: ")),
+                input("Insira seu cargo: "), 
+                input("Insira seu usuario: "), 
+                input("Insira sua senha: "), 
             )
             #Sair do loop caso dê certo
-            break
+            # try:
+            #Criando a uma conexao
+            conexao = iniciar_conexao()
+
+            # Criação do cursor
+            cursor = conexao.cursor()
+            #Verificando se existe colaborador na base de dados
+            comando_select = f'SELECT cpf_cola FROM table_colaborador WHERE cpf_cola = "{colaborador.cpf}"'
+            cursor.execute(comando_select)
+            result = cursor.fetchone()
+
+            if result:
+                print("Colaborador já existente na base de dados.")
+            else:
+                comando = f'INSERT INTO table_colaborador (nome_cola,endereco_cola,email_cola,cpf_cola,telefone_cola,user_cola,senha_cola) VALUES\
+                ("{colaborador.nome}", "{colaborador.endereco}", "{colaborador.email}", "{colaborador.cpf}", {colaborador.telefone},"{colaborador.usuario}","{colaborador.senha}")'
+                #Executa o comando na base de dados 
+                cursor.execute(comando)
+                # Atualiza o banco de dados
+                conexao.commit()
+                print("Ação realizada com sucesso.")
+                break
         except ValueError:
             print("Insira apenas números para telefone.")
-        
-    try:
-        #Criando a uma conexao
-        conexao = iniciarConexao()
-
-        # Criação do cursor
-        cursor = conexao.cursor()
-        #Verificando se existe colaborador na base de dados
-        comando_select = f'SELECT cpf_cola FROM table_colaborador WHERE cpf_cola = "{colaborador.cpf}"'
-        cursor.execute(comando_select)
-        result = cursor.fetchone()
-
-        if result:
-            print("Colaborador já existente na base de dados.")
-        else:
-            comando = f'INSERT INTO table_colaborador (nome_cola,endereco_cola,email_cola,cpf_cola,telefone_cola,user_cola,senha_cola) VALUES\
-            ("{colaborador.nome}", "{colaborador.endereco}", "{colaborador.email}", "{colaborador.cpf}", {colaborador.telefone},"{colaborador.usuario}","{colaborador.senha}")'
-            #Executa o comando na base de dados 
-            cursor.execute(comando)
-            # Atualiza o banco de dados
-            conexao.commit()
-            print("Ação realizada com sucesso.")
-    except:
-        print("Erro ao inserir colaborador.")
-    finally:
-        cursor.close()
-        conexao.close()
+        except:
+            print("Erro ao inserir colaborador.")
+        finally:
+            cursor.close()
+            conexao.close()
+    
 
 #Inserindo cliente na base de dados
 def cliente(cliente):
+
     while True:
         #Eu poderia ter feito um isinstance para o numero de telefone, porém, optiei por deixar esse aqui
         try:
@@ -79,14 +84,15 @@ def cliente(cliente):
                 input("Insira seu cpf: "), 
                 int(input("Insira seu telefone: ")),
             )
-            #Sair do loop caso dê certo
-            break
         except:
             raise ValueError("Preencha apenas números para o telefone")
+        finally:
+            #Sair do loop caso dê certo
+            break
         
     try:
         #Criando a uma conexao 
-        conexao = iniciarConexao()
+        conexao = iniciar_conexao()
 
         # Criação do cursor
         cursor = conexao.cursor()
@@ -126,7 +132,7 @@ def venda(venda):
             venda = int(venda)
     try:
         #Criando a uma conexao 
-        conexao = iniciarConexao()
+        conexao = iniciar_conexao()
 
         # Criação do cursor
         cursor = conexao.cursor()
@@ -146,10 +152,11 @@ def venda(venda):
         conexao.close()
 
 #Cancelando venda na base de dados
-def cancelaVenda():
+def cancela_venda():
+
     try:
         #Criando a uma conexao 
-        conexao = iniciarConexao()
+        conexao = iniciar_conexao()
 
         # Criação do cursor
         cursor = conexao.cursor()
@@ -170,10 +177,11 @@ def cancelaVenda():
         conexao.close()
 
 #Consultando material na base de dados
-def vizualizarVenda():
+def vizualizar_venda():
+
     try:
         #Criando a uma conexao 
-        conexao = iniciarConexao()
+        conexao = iniciar_conexao()
 
         # Criação do cursor
         cursor = conexao.cursor()
@@ -193,6 +201,7 @@ def vizualizarVenda():
 
 #Inserindo material na base de dados
 def material(material):
+
     while True:
         try:
             material = Material(
@@ -209,7 +218,7 @@ def material(material):
             raise ValueError("Insira apenas valores numéricos para quantidade e preço.")
     try:
         #Criando a uma conexao 
-        conexao = iniciarConexao()
+        conexao = iniciar_conexao()
 
         # Criação do cursor
         cursor = conexao.cursor()
@@ -237,10 +246,11 @@ def material(material):
         conexao.close()
 
 #Removendo funcionario na base de dados
-def removerFuncionario():
+def remover_funcionario():
+
     try:
         #Criando a uma conexao 
-        conexao = iniciarConexao()
+        conexao = iniciar_conexao()
 
         # Criação do cursor
         cursor = conexao.cursor()
@@ -261,17 +271,22 @@ def removerFuncionario():
         conexao.close()
 
 #As credenciais de funcionario e adm serão realizadas para liberar o acesso
-def verificarCredenciais(Login):
+def verificar_credenciais(login):
+
+    login = Login(
+            input('Insira seu usuário: '),
+            input('Insira sua senha: '),
+        )
 
     try:
         # Criando uma conexao 
-        conexao = iniciarConexao()
+        conexao = iniciar_conexao()
 
         # Criação do cursor
         cursor = conexao.cursor()
 
         # Verificando as credenciais no banco de dados
-        comando_select = f'SELECT user_cola, senha_cola FROM table_colaborador WHERE user_cola = "{Login.usuario}" AND senha_cola = "{Login.senha}"'
+        comando_select = f'SELECT user_cola, senha_cola FROM table_colaborador WHERE user_cola = "{login.usuario}" AND senha_cola = "{login.senha}"'
         cursor.execute(comando_select)
 
         # Ler o banco de dados

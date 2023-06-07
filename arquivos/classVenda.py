@@ -11,39 +11,36 @@ class Venda:
         horario_BR = datetime.now(fuso_BR)
         return horario_BR.strftime('%d/%m/%y %H:%M:%S')
 
-    def __init__(self,valorTotal:float) -> None:
-        self._idVenda = ""
+    def __init__(self,valor_total:float) -> None:
+        self._id_venda = ""
         self._data = Venda._data_hora()
-        self._valorTotal = valorTotal
+        self._valor_total = valor_total
 
     #Fornecendo caracteristica das vendas por meio getter e setter
     @property
-    def idVenda(self):
-        return self._idVenda
-    @idVenda.setter
-    def idVenda(self,idVenda):
-        self._idVenda = idVenda
+    def id_venda(self) -> str:
+        return self.id_venda
         
     @property
-    def valorTotal(self)-> float:
-        return self._valorTotal
-    @valorTotal.setter
-    def valorTotal(self,valorTotal:float):
-        self._valorTotal = valorTotal
+    def valor_total(self)-> float:
+        return self.valor_total
+    @valor_total.setter
+    def valor_total(self,valor_total:float):
+        self._valor_total = valor_total
     
     #Funcao responsável por gerar nota
-    def gerarNota(self,Material,Cliente) -> str:
+    def gerar_nota(self,Material,Cliente) -> str:
         
         escolha = input("Deseja nome e CPF na nota? S/N: ")
 
         if escolha.capitalize() == "S":
             print(f"Vendidos {Material.quantidade} quantidades de {Material.nome} por {Material.preco}.\
             \nNome cliente:{Cliente.nome} CPF:{Cliente.cpf}\
-            \nData:{self._data}.\nValor total da venda:{self._valorTotal}")
+            \nData:{self._data}.\nValor total da venda:{self._valor_total}")
         else:
             print(f"Vendidos {Material.quantidade} quantidades do {Material.nome} por {Material.preco}.\
-            \nData:{self._data}.\nValor total da venda:{self._valorTotal}")
+            \nData:{self._data}.\nValor total da venda:{self._valor_total}")
     
     #Essa é uma funcionalidade que quem faz é o funcionário
-    def balancoMensal(self):
+    def balanco_mensal(self):
         pass

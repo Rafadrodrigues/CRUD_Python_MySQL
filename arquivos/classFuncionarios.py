@@ -2,10 +2,10 @@ from classCliente import Cliente
 
 class Funcionario(Cliente):
 
-    def __init__(self,nome:str,endereco:str,email:str,cpf:str,telefone:int,cargo:str,salario:float,usuario:str,senha:str) -> None:
-        super().__init__(nome,endereco,email,cpf,telefone)
+    def __init__(self,nome:str,endereco:str,email:str,cpf:str,telefone:int,cargo:str,usuario:str,senha:str) -> None:
+        super().__init__(nome,endereco,email,cpf,telefone,num_cartao=int)
         self._cargo = cargo
-        self._salario = salario
+        self._salario = None
         self._usuario = usuario
         self._senha = senha
 
@@ -24,6 +24,14 @@ class Funcionario(Cliente):
     @usuario.setter
     def usuario(self,usuario:str):
         self._usuario = usuario
+
+    @property
+    def senha(self) -> str:
+        return self._senha
+    
+    @senha.setter
+    def senha(self,senha:str):
+        self._senha = senha
 
     def realizar_venda(self):
         pass

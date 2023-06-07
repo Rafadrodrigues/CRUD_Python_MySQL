@@ -27,6 +27,14 @@ class Pessoa(ABC):
         self._endereco = endereco
 
     @property   
+    def email(self) -> str:
+        return self._email
+
+    @email.setter
+    def email(self,email:str):
+        self._email = email
+
+    @property   
     def cpf(self) -> str:
         return self._cpf
     @cpf.setter
