@@ -24,7 +24,7 @@ class Sistema:
     def realizar_venda(self):
         #Inserindo venda na base de dados
         Banco_de_dados.venda(Venda)
-        Venda.gerar_nota(Material,Cliente)
+        Venda.gerar_nota(self,Material,Cliente)
 
     def cancelar_venda(self):
         #Cancelando venda na base de dados

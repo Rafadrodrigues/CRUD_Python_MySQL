@@ -1,5 +1,14 @@
 #Classe responsável por atribuir definir materiais no sistema
+from datetime import datetime
+import pytz
+
 class Material:
+
+    @staticmethod
+    def _data_hora():
+        fuso_BR = pytz.timezone('Brazil/East')
+        horario_BR = datetime.now(fuso_BR)
+        return horario_BR.strftime('%d/%m/%y %H:%M:%S')
 
     def __init__(self,nome:str,quantidade:int,preco:float,especificacao:str,data_fabricacao:str,fornecedor:str) -> None:
         self._nome = nome
@@ -42,8 +51,8 @@ class Material:
         return self._data_fabricacao
     @data_fabricacao.setter
     def data_fabricacao(self,data_fabricacao:str):
-        self.data_fabricacao = data_fabricacao
-
+        self._data_fabricacao = data_fabricacao
+        
     @property   
     def fornecedor(self) -> str:
         return self._fornecedor
