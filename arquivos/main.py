@@ -1,72 +1,98 @@
-#Local onde vai ser executado o código do sistema
-from classFuncionarios import Funcionario
-from classCliente import Cliente
-from classMaterial import Material
-from classSistema import Sistema
-from classVenda import Venda
-from classLogin import Login
 from time import sleep
+from datetime import datetime
+import pytz
 import os
+import _mysql_connector
 
+#Funcao que recebe o usuário e mostrando as opções
 def inicio():
-    #Recebendo o usuário e mostrando as opções
-    print("Seja bem-vindo a Constrular LTDA\n" + 35 * "-" + "\nComo posso ajudar?")
-    print("[1] - Cadastrar Funcionário.\n[2] - Cadastrar Cliente.\n[3] - Registrar Venda.\n[4] - Cadastrar Material.\n[5] - Consultar Vendas.\n[6] - Cancelar Venda. \n[7] - Remover funcionário. \n[8]- Sair.")
-
-#Funcao responsável por direcionar a escolha feita pelo usuário
-def escolher_opcao(opcao):
-    if opcao == "1":
-        Sistema.incluir_funcionario(Funcionario)
-    elif opcao == "2":
-        Sistema.incluir_cliente(Cliente)
-    elif opcao == "3":
-        Sistema.realizar_venda(Venda)
-    elif opcao == "4":
-        Sistema.incluir_material(Material)
-    elif opcao == "5":
-        Sistema.consultar_vendas()
-    elif opcao == "6":
-        Sistema.cancelar_venda()
-    elif opcao == "7":
-        Sistema.desativa_funcionario()
-    elif opcao == "8":
-        quit()
-
-def continuar() -> bool:
-    continuar = input("Deseja continuar S/N: ")
-    if continuar.capitalize == 'S':
-        return True
-    else:
-        print("Sistema finalizado. ")
-        return False
     
-# #Essa função retornar até que o usuario insira alguma credencial correta
-# def liberar_acesso():
-#     # Realizando login
-#     print('---------------LOGIN----------------')
-#     while True:
-#         liberaracao = Banco_de_dados.verificar_credenciais(Login)
-#         if liberaracao != True:
-#             continue
-#         else:
-#             break
-    
-# def primeiro_usuario():
-#     #Criando o primeiro usuario para que ele tenha acesso ao sistema
-#     print('Olá, forneça seus dados por favor. ')
-#     Sistema.incluir_funcionario(Funcionario)
+    print("Seja bem-vindo a Constrular LTDA\n" + 35 * "-")
+    print("01 - Cadastrar Funcionário\n" + 
+        "02 - Cadastrar Cliente\n" +
+        "03 - Cadastrar Material\n" + 
+        "04 - Cadastrar Venda\n" + 
+        "05 - Atualizar Funcionário\n" + 
+        "06 - Atualizar Cliente\n" +
+        "07 - Remover Funcionário\n" +
+        "08 - Remover Cliente\n" +
+        "09 - Remover Material\n" +
+        "10 - Remover Venda\n" +
+        "11 - Sair do sistema\n"
+        )
+
+def _data_hora():
+    fuso_BR = pytz.timezone('Brazil/East')
+    horario_BR = datetime.now(fuso_BR)
+    return horario_BR.strftime('%d/%m/%y %H:%M:%S')
+
+#Funcao que realiza o cadastro de funcionarios na base de dados
+cadastrar_funcionario = lambda *args, **kwargs: print(kwargs) 
+
+#Funcao que realiza o cadastro de clientes na base de dados
+cadastrar_cliente = lambda *args, **kwargs : print(kwargs)
+
+#Funcao que realiza o cadastro de vendas na base de dados
+cadastrar_venda = lambda *args, **kwargs: print(kwargs)
+
+#Funcao que realiza o cadastro de materiais na base de dados
+cadastrar_material = lambda *args, **kwargs: print(kwargs)
+
 
 #Caso a opcão seja selecionada, a função vai ser chamada e realizada
 if __name__=="__main__":
-    
-    #Inicializando as opções
-    while True:
-        #Preciso agora apenas colocar as opções de realizar login que depois vai liberar o acesso ao programaa
-        inicio()
-        opcao = input("Digite a opção desejada: ")
-        os.system("cls")
-        escolher_opcao(opcao)
-        continuar()
+
+    inicio()
+    # os.system("cls")
+    # sleep(2)
+
+    lista_opcoes = [
+        'Cadastrar Funcionário',
+        'Cadastrar Cliente',
+        'Cadastrar Material',
+        'Cadastrar Venda',
+        'Atualizar Funcionário',
+        'Atualizar Cliente',
+        'Remover Funcionário',
+        'Remover Cliente',
+        'Remover Material',
+        'Remover Venda',
+        'Sair'
+    ]
+
+    print([i for i in lista_opcoes])
+#Coletando informações do funcionário.
+    cadastrar_funcionario(
+        nome = input('Insira seu nome: '),
+        idade = int(input('Insira sua idade: ')),
+        cpf = input('Insira seu CPF: '),
+        telefone = input('Insira seu Telefone: '),
+        cargo = input('Insira seu Cargo: '),
+        endereco = input('Rua e Número da sua casa: '),
+    )
+
+#Coletando informações do Cliente.
+    cadastrar_cliente(
+        nome = input('Insira seu nome: '),
+        idade = int(input('Insira sua idade: ')),
+        cpf = input('Insira seu CPF: '),
+        telefone = input('Insira seu Telefone: '),
+        endereco = input('Rua e Número da sua casa: '),
+    )
+
+#Coletando informações da Venda.
+    cadastrar_venda(
+        nome = input('Nome do material vendido: '),
+        valor = float(input('Valor da venda: ')),
+        data_hora = _data_hora()
+    )
+
+#Coletando informações do material.
+    cadastrar_material(
+        nome = input('Nome do material: '),
+        quantidade = int(input('Quantidade: ')),
+        valor = float(input('Valor da material: ')),
+    )
 
 '''                                     IMPORTANTE
 Eu criei esse projeto para tentar testar meus conhecimentos em orientacao a objetos e integraçao com 

@@ -4,41 +4,107 @@ from classVenda import Venda
 from classFuncionarios import Funcionario
 from classLogin import Login
 from time import sleep
+from typing import TypeVar, List
 import os
 import mysql.connector
 
+T = TypeVar('T')
 #Conectamos o python com banco de dados
-def iniciar_conexao():
-    #Talvez eu deva tirar esse try
-    while True:
-        try:
-            conexao = mysql.connector.connect(
-            host='localhost', 
-            database='materialconstrucao', 
-            user='root', 
-            password='**'
-            )
-            return conexao
-        except:
-            raise ValueError("Conexão não estabelecida.")
-        finally:
-            os.system("cls")
+def criar_tabela():
 
+    try:
+        #Criando a uma conexao
+        conexao = mysql.connector.connect(
+            host='localhost', 
+            user='root', 
+            password='88554663'
+            )
+    except:
+        raise ValueError("Conexão não estabelecida.")
+    finally:
+        os.system("cls")
+
+    # Criação do cursor
+    cursor = conexao.cursor()
+
+    create_db = 'CREATE DATABASE MATERIALCONSTRUCAO'
+    cursor.execute(create_db)
+    print('Base criada com sucesso!')
+
+    table_funcionario =  """
+    CREATE TABLE FUNCIONARIO (
+        IDFUNCIONARIO INT PRIMARY KEY AUTO_INCREMENT,
+        nome VARCHAR(100) NOT NULL,
+        idade INT NOT NULL,
+        cpf VARCHAR(15) NOT NULL,
+        telefone VARCHAR(15) NOT NULL,
+        cargo VARCHAR(30) NOT NULL,
+        endereco VARCHAR(200),
+    )
+    """
+    cursor.execute(table_funcionario)
+
+    table_cliente =  """
+    CREATE TABLE CLIENTE (
+        IDCLIENTE INT PRIMARY KEY AUTO_INCREMENT,
+        nome VARCHAR(100) NOT NULL,
+        idade INT NOT NULL,
+        cpf VARCHAR(15) NOT NULL,
+        telefone VARCHAR(15) NOT NULL,
+        endereco VARCHAR(200),
+    )
+    """
+    cursor.execute(table_cliente)
+    
+    table_material =  """
+    CREATE TABLE MATERIAL (
+        IDMATERIAL INT PRIMARY KEY AUTO_INCREMENT,
+        nome VARCHAR(100) NOT NULL,
+        valor FLOAT(10,2) NOT NULL,
+        data_hora VARCHAR(20) NOT NULL
+    )
+    """
+    cursor.execute(table_material)
+
+    table_venda =  """
+        CREATE TABLE VENDA (
+            IDVENDA INT PRIMARY KEY AUTO_INCREMENT,
+            nome VARCHAR(100) NOT NULL,
+            quantidade INT NOT NULL,
+            valor FLOAT(10,2) NOT NULL
+        )
+        """
+    cursor.execute(table_venda)
+    cursor.close()
+    conexao.close()
+
+def inserir_na_bd(usuario:T):
+        
+    #Criando a uma conexao
+    conexao = iniciar_conexao()
+    # Criação do cursor
+    cursor = conexao.cursor()
+    #Verificando se existe colaborador na base de dados
+    comando_select = f'SELECT cpf_cola FROM table_colaborador WHERE cpf_cola = "{colaborador.cpf}"'
+    cursor.execute(comando_select)
+    result = cursor.fetchone()
+
+    if result:
+        print("Funcionário já existente na base de dados.")
+    else:
+        comando = f'INSERT INTO table_colaborador (nome_cola,endereco_cola,email_cola,cpf_cola,telefone_cola,user_cola,senha_cola) VALUES\
+        ("{colaborador.nome}", "{colaborador.endereco}", "{colaborador.email}", "{colaborador.cpf}", {colaborador.telefone},"{colaborador.usuario}","{colaborador.senha}")'
+        #Executa o comando na base de dados 
+        cursor.execute(comando)
+        # Atualiza o banco de dados
+        conexao.commit()
+        print("Ação realizada com sucesso.")
+    cursor.close()
+    conexao.close()
 #Inserindo colaborador na base de dados
 def funcionario(colaborador):
 
-    while True:
-        try:
-            colaborador = Funcionario(
-                input("Insira seu nome: "),
-                input("Insira seu endereco: "), 
-                input("Insira seu e-mail: "),
-                input("Insira seu cpf: "), 
-                int(input("Insira seu telefone: ")),
-                input("Insira seu cargo: "), 
-                input("Insira seu usuario: "), 
-                input("Insira sua senha: "), 
-            )
+   
             #Sair do loop caso dê certo
             # try:
             #Criando a uma conexao
@@ -61,16 +127,8 @@ def funcionario(colaborador):
                 # Atualiza o banco de dados
                 conexao.commit()
                 print("Ação realizada com sucesso.")
-                break
-    
-        except ValueError:
-            print("Insira apenas números para telefone.")
-        except:
-            print("Erro ao inserir colaborador.")
-        finally:
             cursor.close()
             conexao.close()
-    
 
 #Inserindo cliente na base de dados
 def cliente(cliente):
