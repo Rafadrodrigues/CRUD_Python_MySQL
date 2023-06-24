@@ -2,7 +2,6 @@ from time import sleep
 from datetime import datetime
 import pytz
 import os
-import _mysql_connector
 
 #Funcao que recebe o usuário e mostrando as opções
 def inicio():
@@ -84,6 +83,7 @@ if __name__=="__main__":
     cadastrar_venda(
         nome = input('Nome do material vendido: '),
         valor = float(input('Valor da venda: ')),
+        quantidade = float(input('Quantidade Vendida: ')),
         data_hora = _data_hora()
     )
 
