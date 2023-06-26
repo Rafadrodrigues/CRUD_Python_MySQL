@@ -37,18 +37,56 @@ def inicio():
             "4 - Venda\n" + 
             "5 - Sair"  
         )
+    os.system("cls")
 
-    lista_opcoes = {"Inserir":{1:"Funcionário",2:"Cliente",3:"Material",4:"Venda"},
-        "Deletar":{1:"Funcionário",2:"Cliente",3:"Material",4:"Venda"},
-        "Vizualizar":{1:"Funcionário",2:"Cliente",3:"Material",4:"Venda"},
-    }
-
-    # saida = str(lista_opcoes).replace("{", "").replace("}", "").replace("'", "")
-
-    # print(saida)
-    # os.system("cls")
-
-    # selecao = [opcao for opcao in lista_opcoes if opcao in lista_opcoes]
+    #Inserindo funcionario na base de dados
+    if "Inserir" in opcao and "Funcionário" in opcao_tipo:
+        funcionario = coletar_info_func()
+        Banco_de_dados.inserir_na_bd(funcionario)
+    #Inserindo cliente na base de dados
+    if "Inserir" in opcao and "Cliente" in opcao_tipo:
+        cliente = coletar_info_func()
+        Banco_de_dados.inserir_na_bd(cliente)
+    #Inserindo material na base de dados
+    if "Inserir" in opcao and "Material" in opcao_tipo:
+        material = coletar_info_func()
+        Banco_de_dados.inserir_na_bd(material)
+    #Inserindo venda na base de dados
+    if "Inserir" in opcao and "Venda" in opcao_tipo:
+        venda = coletar_info_func()
+        Banco_de_dados.inserir_na_bd(venda)
+    #Deletando funcionario na base de dados
+    if "Deletar" in opcao and "Funcionário" in opcao_tipo:
+        funcionario = coletar_info_func()
+        Banco_de_dados.deletar_na_bd(funcionario)
+    #Deletando cliente na base de dados
+    if "Deletar" in opcao and "Cliente" in opcao_tipo:
+        cliente = coletar_info_func()
+        Banco_de_dados.deletar_na_bd(cliente)
+    #Deletando material na base de dados
+    if "Deletar" in opcao and "Material" in opcao_tipo:
+        material = coletar_info_func()
+        Banco_de_dados.deletar_na_bd(material)
+    #Deletando venda na base de dados
+    if "Deletar" in opcao and "Venda" in opcao_tipo:
+        venda = coletar_info_func()
+        Banco_de_dados.deletar_na_bd(venda)
+    #Vizualizando Funcionário na base de dados
+    if "Vizualizar" in opcao and "Funcionário" in opcao_tipo:
+        funcionario = coletar_info_func()
+        Banco_de_dados.vizualizar_na_bd(funcionario)
+    #Vizualizando cliente na base de dados
+    if "Vizualizar" in opcao and "Cliente" in opcao_tipo:
+        cliente = coletar_info_func()
+        Banco_de_dados.vizualizar_na_bd(cliente)
+    #Vizualizando material na base de dados
+    if "Vizualizar" in opcao and "Material" in opcao_tipo:
+        material = coletar_info_func()
+        Banco_de_dados.vizualizar_na_bd(material)
+    #Vizualizando venda na base de dados
+    if "Vizualizar" in opcao and "Venda" in opcao_tipo:
+        venda = coletar_info_func()
+        Banco_de_dados.vizualizar_na_bd(venda)
 
 def _data_hora():
     fuso_BR = pytz.timezone('Brazil/East')
