@@ -89,7 +89,7 @@ def iniciar_conexao():
     finally:
         os.system("cls")
 
-def inserir_na_bd(usuario:T):
+def inserir_na_bd(usuario:T)-> None:
     #Criando a uma conexao
     conexao = iniciar_conexao()
     # Criação do cursor
@@ -139,7 +139,7 @@ def inserir_na_bd(usuario:T):
     conexao.close()
 
 #Cancelando venda na base de dados
-def deletar_na_bd(usuario:T,id:str):
+def deletar_na_bd(usuario:T, id:str) -> None:
 
     #Criando a uma conexao
     conexao = iniciar_conexao()
@@ -186,51 +186,48 @@ def deletar_na_bd(usuario:T,id:str):
     conexao.close()
 
 #Consultando material na base de dados
-def vizualizar_venda():
+def vizualizar_na_bd(usuario:T):
     #Para melhor vizualização, pode aprensentar informação com um dicionario
-    while True:
-        try:
-            #Criando a uma conexao 
-            conexao = iniciar_conexao()
-
-            # Criação do cursor
-            cursor = conexao.cursor()
-
-            #Vizualizando uma venda na base de dados
-            comando = f'SELECT * FROM table_vendas'
-            cursor.execute(comando)
-            # ler o banco de dados
-            resultado = cursor.fetchall() 
-            print(resultado)
-            print("Ação realizada com sucesso.")
-            break
-        except:
-            print("Erro ao consultar venda.")
-        finally:
-            cursor.close()
-            conexao.close()
-
-#Removendo funcionario na base de dados
-def remover_funcionario():
-
-    try:
         #Criando a uma conexao 
         conexao = iniciar_conexao()
-
         # Criação do cursor
         cursor = conexao.cursor()
 
-        #Cancelando uma venda na base de dados
-        cpf_funcionario = input("Cpf do funcionário: ")
+        #Vizualizando informações do funcionario na base de dados
+        if usuario == 'Funcionario':
+            comando = f'SELECT * FROM table_funcionario'
+            #Executa o comando na base de dados 
+            cursor.execute(comando)
+            # Atualiza o banco de dados
+            conexao.commit()
+            print("Ação realizada com sucesso.")
+        
+        #Vizualizando informações do cliente na base de dados
+        if usuario == 'Cliente':
+            comando = f'SELECT * FROM table_cliente'
+            #Executa o comando na base de dados 
+            cursor.execute(comando)
+            # Atualiza o banco de dados
+            conexao.commit()
+            print("Ação realizada com sucesso.")
+        
+        #Vizualizando informações do material na base de dados
+        if usuario == 'Material':
+            comando = f'SELECT * FROM table_material'
+            #Executa o comando na base de dados 
+            cursor.execute(comando)
+            # Atualiza o banco de dados
+            conexao.commit()
+            print("Ação realizada com sucesso.")
+        
+        #Vizualizando informações da venda na base de dados
+        if usuario == 'Venda':
+            comando = f'SELECT * FROM table_venda'
+            #Executa o comando na base de dados 
+            cursor.execute(comando)
+            # Atualiza o banco de dados
+            conexao.commit()
+            print("Ação realizada com sucesso.")
 
-        comando = f'DELETE FROM table_colaborador WHERE cpf_cola = "{cpf_funcionario}"'
-        cursor.execute(comando)
-        # edita o banco de dados
-        conexao.commit()
-        #Atualiza o banco de dados
-        print("Ação realizada com sucesso.")
-    except:
-        print('Erro ao remover colaborador')
-    finally:
         cursor.close()
         conexao.close()
