@@ -4,29 +4,17 @@ import Banco_de_dados
 import pytz
 import os
 
-'''                                     IMPORTANTE
-Eu criei esse projeto para tentar testar meus conhecimentos em orientacao a objetos e integraçao com 
-banco de dados, porém, futuramente, vou estar realizando uma manutenção no código e pretendo integralo
-com alguma interface grafica e deixa-lo com "mais cara " de Python. Esse é um planejamento que pretendo 
-para o mês de agosto, mes que vou estar de ferias da faculdade e consequentemente vou ter mais tempo
-para dar atençao"'''
-
-
-
-#Funcao que recebe o usuário e mostrando as opções
-def inicio():
+#Função que vai representar as informaçoes ao usuário
+def inicio() :
     
     print("Seja bem-vindo a Constrular LTDA\n" + 35 * "-")
-
-    opcao = input('Qual opção deseja? ')
     print(
         "1 - Inserir\n" + 
         "2 - Deletar\n" +
         "3 - Vizualizar\n" + 
         "4 - Sair" 
         )
-    
-    opcao_tipo = input('Qual opção deseja? ')
+    opcao = input('Qual opção deseja? ')
     os.system("cls")
 
     if "Inserir" or "Deletar" or "Vizualizar" in opcao:
@@ -37,6 +25,7 @@ def inicio():
             "4 - Venda\n" + 
             "5 - Sair"  
         )
+    opcao_tipo = input('Qual opção deseja? ')
     os.system("cls")
 
     #Inserindo funcionario na base de dados
@@ -45,55 +34,52 @@ def inicio():
         Banco_de_dados.inserir_na_bd(funcionario)
     #Inserindo cliente na base de dados
     if "Inserir" in opcao and "Cliente" in opcao_tipo:
-        cliente = coletar_info_func()
+        cliente = coletar_info_clien()
         Banco_de_dados.inserir_na_bd(cliente)
     #Inserindo material na base de dados
     if "Inserir" in opcao and "Material" in opcao_tipo:
-        material = coletar_info_func()
+        material = coletar_info_mate()
         Banco_de_dados.inserir_na_bd(material)
     #Inserindo venda na base de dados
     if "Inserir" in opcao and "Venda" in opcao_tipo:
-        venda = coletar_info_func()
+        venda = coletar_info_venda()
         Banco_de_dados.inserir_na_bd(venda)
     #Deletando funcionario na base de dados
     if "Deletar" in opcao and "Funcionário" in opcao_tipo:
-        funcionario = coletar_info_func()
-        Banco_de_dados.deletar_na_bd(funcionario)
+        funcionario = input("Insira o CPF: ")
+        Banco_de_dados.deletar_na_bd("Funcionario",funcionario)
     #Deletando cliente na base de dados
     if "Deletar" in opcao and "Cliente" in opcao_tipo:
-        cliente = coletar_info_func()
-        Banco_de_dados.deletar_na_bd(cliente)
+        cliente = input("Insira o CPF: ")
+        Banco_de_dados.deletar_na_bd("Cliente",cliente)
     #Deletando material na base de dados
     if "Deletar" in opcao and "Material" in opcao_tipo:
-        material = coletar_info_func()
-        Banco_de_dados.deletar_na_bd(material)
+        material = input("Nome do material: ")
+        Banco_de_dados.deletar_na_bd("Material",material)
     #Deletando venda na base de dados
     if "Deletar" in opcao and "Venda" in opcao_tipo:
-        venda = coletar_info_func()
-        Banco_de_dados.deletar_na_bd(venda)
+        venda = material = input("Nome da venda: ")
+        Banco_de_dados.deletar_na_bd("Venda",venda)
     #Vizualizando Funcionário na base de dados
     if "Vizualizar" in opcao and "Funcionário" in opcao_tipo:
-        funcionario = coletar_info_func()
-        Banco_de_dados.vizualizar_na_bd(funcionario)
+        Banco_de_dados.vizualizar_na_bd("Funcionario")
     #Vizualizando cliente na base de dados
     if "Vizualizar" in opcao and "Cliente" in opcao_tipo:
-        cliente = coletar_info_func()
-        Banco_de_dados.vizualizar_na_bd(cliente)
+        Banco_de_dados.vizualizar_na_bd("Cliente")
     #Vizualizando material na base de dados
     if "Vizualizar" in opcao and "Material" in opcao_tipo:
-        material = coletar_info_func()
-        Banco_de_dados.vizualizar_na_bd(material)
+        Banco_de_dados.vizualizar_na_bd("Material")
     #Vizualizando venda na base de dados
     if "Vizualizar" in opcao and "Venda" in opcao_tipo:
-        venda = coletar_info_func()
-        Banco_de_dados.vizualizar_na_bd(venda)
+        Banco_de_dados.vizualizar_na_bd("Venda")
 
-def _data_hora():
+def _data_hora() -> datetime:
+#Coletando data e hora para servir de informaçao na venda
     fuso_BR = pytz.timezone('Brazil/East')
     horario_BR = datetime.now(fuso_BR)
     return horario_BR.strftime('%d/%m/%y %H:%M:%S')
 
-def coletar_info_func():
+def coletar_info_func() -> None:
 #Coletando informações do funcionário.
     cadastrar_funcionario(
         nome = input('Insira seu nome: '),
@@ -103,7 +89,7 @@ def coletar_info_func():
         cargo = input('Insira seu Cargo: '),
         endereco = input('Rua e Número da sua casa: '),
     )
-def coletar_info_clien():
+def coletar_info_clien() -> None:
 #Coletando informações do Cliente.
     cadastrar_cliente(
         nome = input('Insira seu nome: '),
@@ -112,7 +98,7 @@ def coletar_info_clien():
         telefone = input('Insira seu Telefone: '),
         endereco = input('Rua e Número da sua casa: '),
     )
-def coletar_info_venda():
+def coletar_info_venda() -> None:
 #Coletando informações da Venda.
     cadastrar_venda(
         nome = input('Nome do material vendido: '),
@@ -120,7 +106,7 @@ def coletar_info_venda():
         quantidade = float(input('Quantidade Vendida: ')),
         data_hora = _data_hora()
     )
-def coletar_info_mate():
+def coletar_info_mate() -> None: 
 #Coletando informações do material.
     cadastrar_material(
         nome = input('Nome do material: '),
@@ -143,13 +129,17 @@ cadastrar_material = lambda *args, **kwargs: print(kwargs)
 #Caso a opcão seja selecionada, a função vai ser chamada e realizada
 if __name__=="__main__":
 
-    inicio()
-    # os.system("cls")
-    # sleep(2)
-
-    # if 'Funcionario' or 'Cliente' or 'Material' or 'Venda' in selecao:
-    #     Banco_de_dados.inserir_na_bd('Funcionario')
-    # if 'Funcionario' in selecao:
-    #     Banco_de_dados.deletar_na_bd()
-    # if 'Funcionario' in selecao:
-    #     Banco_de_dados.vizualizar_na_bd()
+    """
+Os comandos comentados, são para criação da base de dados e das tabelas que serão utilizadas.
+Para aqueles que já executaram o código em sua máquina, deixem comentado para que não ocorra erro
+pois a tabela já vai ter sido criado, caso não tenha executado nenhuma vez, retire os comentários da
+das linhas abaixo. 
+    """
+# Banco_de_dados.criar_base()
+# sleep(2)
+# os.system("cls")
+# Banco_de_dados.criar_tabelas()
+# sleep(2)
+# os.system("cls")
+inicio()
+os.system("cls")

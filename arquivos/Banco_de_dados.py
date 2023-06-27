@@ -1,12 +1,9 @@
 from time import sleep
-from typing import TypeVar
 import os
 import mysql.connector
 
-T = TypeVar('T')
-
 #Conectamos o python com banco de dados e criamos o banco de dados e suas tabelas
-def criar_tabela() -> None:
+def criar_base():
     try:
         #Criando a uma conexao
         conexao = mysql.connector.connect(
@@ -26,6 +23,30 @@ def criar_tabela() -> None:
     cursor.execute(create_db)
     print('Base criada com sucesso!')
 
+#Com essa função vamos fazer as manipulações no banco de dados, talvez ela possa ser utilizada mais em cima 
+def iniciar_conexao():
+    
+    try:
+        #Criando a uma conexao
+        conexao = mysql.connector.connect(
+            host='localhost', 
+            user='root', 
+            password='**',
+            database = 'MATERIALCONSTRUCAO',
+            )
+        return conexao
+    except:
+        raise ValueError("Conexão não estabelecida.")
+    finally:
+        os.system("cls")
+
+def criar_tabelas():
+
+    #Criando a uma conexao
+    conexao = iniciar_conexao()
+    # Criação do cursor
+    cursor = conexao.cursor()
+    
     table_funcionario =  """
     CREATE TABLE FUNCIONARIO (
         IDFUNCIONARIO INT PRIMARY KEY AUTO_INCREMENT,
@@ -73,23 +94,7 @@ def criar_tabela() -> None:
     cursor.close()
     conexao.close()
 
-#Com essa função vamos fazer as manipulações no banco de dados, talvez ela possa ser utilizada mais em cima 
-def iniciar_conexao():
-    try:
-        #Criando a uma conexao
-        conexao = mysql.connector.connect(
-            host='localhost', 
-            user='root', 
-            password='88554663',
-            database = 'MATERIALCONSTRUCAO',
-            )
-        return conexao
-    except:
-        raise ValueError("Conexão não estabelecida.")
-    finally:
-        os.system("cls")
-
-def inserir_na_bd(usuario:T)-> None:
+def inserir_na_bd(usuario:str)-> None:
     #Criando a uma conexao
     conexao = iniciar_conexao()
     # Criação do cursor
@@ -97,7 +102,7 @@ def inserir_na_bd(usuario:T)-> None:
 
     #Realizando inserção dos dados do funcionario na base de dados
     if usuario == 'Funcionario':
-        comando = f'INSERT INTO table_funcionario (nome,idade,cpf,telefone,cargo,endereco) VALUES\
+        comando = f'INSERT INTO FUNCIONARIO (nome,idade,cpf,telefone,cargo,endereco) VALUES\
         ("{usuario.nome}", {usuario.idade}, "{usuario.cpf}", {usuario.telefone},"{usuario.cargo}","{usuario.endereco}")'
         #Executa o comando na base de dados 
         cursor.execute(comando)
@@ -107,7 +112,7 @@ def inserir_na_bd(usuario:T)-> None:
 
     #Realizando inserção dos dados do Cliente na base de dados
     if usuario == 'Cliente':
-        comando = f'INSERT INTO table_cliente (nome,idade,cpf,telefone,endereco) VALUES\
+        comando = f'INSERT INTO CLIENTE (nome,idade,cpf,telefone,endereco) VALUES\
         ("{usuario.nome}", {usuario.idade}, "{usuario.cpf}", {usuario.telefone},"{usuario.endereco}")'
         #Executa o comando na base de dados 
         cursor.execute(comando)
@@ -117,7 +122,7 @@ def inserir_na_bd(usuario:T)-> None:
 
     #Realizando inserção dos dados do Material na base de dados
     if usuario == 'Material':
-        comando = f'INSERT INTO table_material (nome,quantidade,valor) VALUES\
+        comando = f'INSERT INTO MATERIAL (nome,quantidade,valor) VALUES\
         ("{usuario.nome}", {usuario.quantidade},{usuario.valor})'
         #Executa o comando na base de dados 
         cursor.execute(comando)
@@ -127,7 +132,7 @@ def inserir_na_bd(usuario:T)-> None:
 
     #Realizando inserção dos dados da Venda na base de dados
     if usuario == 'Venda':
-        comando = f'INSERT INTO table_venda (nome,valor,quantidade,data) VALUES\
+        comando = f'INSERT INTO VENDA (nome,valor,quantidade,data) VALUES\
         ("{usuario.nome}", {usuario.valor}, {usuario.quantidade},"{usuario.data}")'
         #Executa o comando na base de dados 
         cursor.execute(comando)
@@ -139,7 +144,7 @@ def inserir_na_bd(usuario:T)-> None:
     conexao.close()
 
 #Cancelando venda na base de dados
-def deletar_na_bd(usuario:T, id:str) -> None:
+def deletar_na_bd(usuario:str, id:str) -> None:
 
     #Criando a uma conexao
     conexao = iniciar_conexao()
@@ -148,7 +153,7 @@ def deletar_na_bd(usuario:T, id:str) -> None:
 
     #Realizando remoção do funcionario na base de dados
     if usuario == 'Funcionario':
-        comando = f'DELETE FROM table_funcionario WHERE IDFUNCIONARIO = "{id}"'
+        comando = f'DELETE FROM FUNCIONARIO WHERE IDFUNCIONARIO = "{id}"'
         #Executa o comando na base de dados 
         cursor.execute(comando)
         # Atualiza o banco de dados
@@ -157,7 +162,7 @@ def deletar_na_bd(usuario:T, id:str) -> None:
 
     #Realizando a remoção do cliente na base de dados
     if usuario == 'Cliente':
-        comando = f'DELETE FROM table_cliente WHERE IDCLIENTE = "{id}"'
+        comando = f'DELETE FROM CLIENTE WHERE IDCLIENTE = "{id}"'
         #Executa o comando na base de dados 
         cursor.execute(comando)
         # Atualiza o banco de dados
@@ -166,7 +171,7 @@ def deletar_na_bd(usuario:T, id:str) -> None:
 
     #Realizando a remoção do cliente na base de dados
     if usuario == 'Material':
-        comando = f'DELETE FROM table_material WHERE IDMATERIAL = "{id}"'
+        comando = f'DELETE FROM Material WHERE IDMATERIAL = "{id}"'
         #Executa o comando na base de dados 
         cursor.execute(comando)
         # Atualiza o banco de dados
@@ -175,7 +180,7 @@ def deletar_na_bd(usuario:T, id:str) -> None:
 
     #Realizando a remoção do cliente na base de dados
     if usuario == 'Venda':
-        comando = f'DELETE FROM table_venda WHERE IDVENDA = "{id}"'
+        comando = f'DELETE FROM VENDA WHERE IDVENDA = "{id}"'
         #Executa o comando na base de dados 
         cursor.execute(comando)
         # Atualiza o banco de dados
@@ -186,7 +191,8 @@ def deletar_na_bd(usuario:T, id:str) -> None:
     conexao.close()
 
 #Consultando material na base de dados
-def vizualizar_na_bd(usuario:T):
+def vizualizar_na_bd(usuario:str):
+        
     #Para melhor vizualização, pode aprensentar informação com um dicionario
         #Criando a uma conexao 
         conexao = iniciar_conexao()
@@ -195,7 +201,7 @@ def vizualizar_na_bd(usuario:T):
 
         #Vizualizando informações do funcionario na base de dados
         if usuario == 'Funcionario':
-            comando = f'SELECT * FROM table_funcionario'
+            comando = f'SELECT * FROM FUNCIONARIO'
             #Executa o comando na base de dados 
             cursor.execute(comando)
             # Atualiza o banco de dados
@@ -204,7 +210,7 @@ def vizualizar_na_bd(usuario:T):
         
         #Vizualizando informações do cliente na base de dados
         if usuario == 'Cliente':
-            comando = f'SELECT * FROM table_cliente'
+            comando = f'SELECT * FROM CLIENTE'
             #Executa o comando na base de dados 
             cursor.execute(comando)
             # Atualiza o banco de dados
@@ -213,7 +219,7 @@ def vizualizar_na_bd(usuario:T):
         
         #Vizualizando informações do material na base de dados
         if usuario == 'Material':
-            comando = f'SELECT * FROM table_material'
+            comando = f'SELECT * FROM Material'
             #Executa o comando na base de dados 
             cursor.execute(comando)
             # Atualiza o banco de dados
@@ -222,7 +228,7 @@ def vizualizar_na_bd(usuario:T):
         
         #Vizualizando informações da venda na base de dados
         if usuario == 'Venda':
-            comando = f'SELECT * FROM table_venda'
+            comando = f'SELECT * FROM VENDA'
             #Executa o comando na base de dados 
             cursor.execute(comando)
             # Atualiza o banco de dados
