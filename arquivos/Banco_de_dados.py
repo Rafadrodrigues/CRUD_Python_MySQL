@@ -1,4 +1,3 @@
-from time import sleep
 import os
 import mysql.connector
 
@@ -9,7 +8,6 @@ def criar_base():
         conexao = mysql.connector.connect(
             host='localhost', 
             user='root', 
-            password='**'
             )
     except:
         raise ValueError("Conexão não estabelecida.")
@@ -31,7 +29,7 @@ def iniciar_conexao():
         conexao = mysql.connector.connect(
             host='localhost', 
             user='root', 
-            password='**',
+            password='88554663',
             database = 'MATERIALCONSTRUCAO',
             )
         return conexao
@@ -93,17 +91,19 @@ def criar_tabelas():
     cursor.execute(table_venda)
     cursor.close()
     conexao.close()
-
-def inserir_na_bd(usuario:str)-> None:
+    
+#Uma função generica, porque ela realiza inserção da base de dados de todos tipo disponível no programa
+def inserir_na_bd(selec_table,usuario:dict):
     #Criando a uma conexao
     conexao = iniciar_conexao()
     # Criação do cursor
     cursor = conexao.cursor()
 
     #Realizando inserção dos dados do funcionario na base de dados
-    if usuario == 'Funcionario':
-        comando = f'INSERT INTO FUNCIONARIO (nome,idade,cpf,telefone,cargo,endereco) VALUES\
-        ("{usuario.nome}", {usuario.idade}, "{usuario.cpf}", {usuario.telefone},"{usuario.cargo}","{usuario.endereco}")'
+    if 'Funcionário' in selec_table:
+
+        comando = f'INSERT INTO FUNCIONARIO (nome, idade, cpf, telefone, cargo, endereco) VALUES \
+        ("{usuario["nome"]}", {usuario["idade"]}, "{usuario["cpf"]}", "{usuario["telefone"]}","{usuario["cargo"]}", "{usuario["endereco"]}")'
         #Executa o comando na base de dados 
         cursor.execute(comando)
         # Atualiza o banco de dados
@@ -111,9 +111,9 @@ def inserir_na_bd(usuario:str)-> None:
         print("Funcionário adicionado com sucesso.")
 
     #Realizando inserção dos dados do Cliente na base de dados
-    if usuario == 'Cliente':
+    if 'Cliente' in selec_table:
         comando = f'INSERT INTO CLIENTE (nome,idade,cpf,telefone,endereco) VALUES\
-        ("{usuario.nome}", {usuario.idade}, "{usuario.cpf}", {usuario.telefone},"{usuario.endereco}")'
+        ("{usuario["nome"]}", {usuario["idade"]}, "{usuario["cpf"]}", "{usuario["telefone"]}","{usuario["endereco"]}")'
         #Executa o comando na base de dados 
         cursor.execute(comando)
         # Atualiza o banco de dados
@@ -121,9 +121,9 @@ def inserir_na_bd(usuario:str)-> None:
         print("Cliente adicionado com sucesso.")
 
     #Realizando inserção dos dados do Material na base de dados
-    if usuario == 'Material':
+    if 'Material' in selec_table:
         comando = f'INSERT INTO MATERIAL (nome,quantidade,valor) VALUES\
-        ("{usuario.nome}", {usuario.quantidade},{usuario.valor})'
+        ("{usuario["nome"]}", {usuario["quantidade"]},{usuario["valor"]})'
         #Executa o comando na base de dados 
         cursor.execute(comando)
         # Atualiza o banco de dados
@@ -131,9 +131,9 @@ def inserir_na_bd(usuario:str)-> None:
         print("Material adicionado com sucesso.")
 
     #Realizando inserção dos dados da Venda na base de dados
-    if usuario == 'Venda':
+    if 'Venda' in selec_table:
         comando = f'INSERT INTO VENDA (nome,valor,quantidade,data) VALUES\
-        ("{usuario.nome}", {usuario.valor}, {usuario.quantidade},"{usuario.data}")'
+        ("{usuario["nome"]}", {usuario["valor"]}, {usuario["quantidade"]},"{usuario["data"]}")'
         #Executa o comando na base de dados 
         cursor.execute(comando)
         # Atualiza o banco de dados
@@ -144,7 +144,7 @@ def inserir_na_bd(usuario:str)-> None:
     conexao.close()
 
 #Cancelando venda na base de dados
-def deletar_na_bd(usuario:str, id:str) -> None:
+def deletar_na_bd(selec_table:str, id:str):
 
     #Criando a uma conexao
     conexao = iniciar_conexao()
@@ -152,7 +152,7 @@ def deletar_na_bd(usuario:str, id:str) -> None:
     cursor = conexao.cursor()
 
     #Realizando remoção do funcionario na base de dados
-    if usuario == 'Funcionario':
+    if 'Funcionário' in selec_table:
         comando = f'DELETE FROM FUNCIONARIO WHERE IDFUNCIONARIO = "{id}"'
         #Executa o comando na base de dados 
         cursor.execute(comando)
@@ -161,7 +161,7 @@ def deletar_na_bd(usuario:str, id:str) -> None:
         print("Funcionário removido com sucesso.")
 
     #Realizando a remoção do cliente na base de dados
-    if usuario == 'Cliente':
+    if 'Cliente' in selec_table :
         comando = f'DELETE FROM CLIENTE WHERE IDCLIENTE = "{id}"'
         #Executa o comando na base de dados 
         cursor.execute(comando)
@@ -170,7 +170,7 @@ def deletar_na_bd(usuario:str, id:str) -> None:
         print("Cliente removido com sucesso.")
 
     #Realizando a remoção do cliente na base de dados
-    if usuario == 'Material':
+    if 'Material' in selec_table:
         comando = f'DELETE FROM Material WHERE IDMATERIAL = "{id}"'
         #Executa o comando na base de dados 
         cursor.execute(comando)
@@ -179,7 +179,7 @@ def deletar_na_bd(usuario:str, id:str) -> None:
         print("Material removido com sucesso.")
 
     #Realizando a remoção do cliente na base de dados
-    if usuario == 'Venda':
+    if 'Venda' in selec_table:
         comando = f'DELETE FROM VENDA WHERE IDVENDA = "{id}"'
         #Executa o comando na base de dados 
         cursor.execute(comando)
@@ -191,7 +191,7 @@ def deletar_na_bd(usuario:str, id:str) -> None:
     conexao.close()
 
 #Consultando material na base de dados
-def vizualizar_na_bd(usuario:str):
+def vizualizar_na_bd(selec_table:str):
         
     #Para melhor vizualização, pode aprensentar informação com um dicionario
         #Criando a uma conexao 
@@ -200,7 +200,7 @@ def vizualizar_na_bd(usuario:str):
         cursor = conexao.cursor()
 
         #Vizualizando informações do funcionario na base de dados
-        if usuario == 'Funcionario':
+        if 'Funcionário' in selec_table:
             comando = f'SELECT * FROM FUNCIONARIO'
             #Executa o comando na base de dados 
             cursor.execute(comando)
@@ -209,7 +209,7 @@ def vizualizar_na_bd(usuario:str):
             print("Ação realizada com sucesso.")
         
         #Vizualizando informações do cliente na base de dados
-        if usuario == 'Cliente':
+        if 'Cliente' in selec_table:
             comando = f'SELECT * FROM CLIENTE'
             #Executa o comando na base de dados 
             cursor.execute(comando)
@@ -218,7 +218,7 @@ def vizualizar_na_bd(usuario:str):
             print("Ação realizada com sucesso.")
         
         #Vizualizando informações do material na base de dados
-        if usuario == 'Material':
+        if 'Material' in selec_table:
             comando = f'SELECT * FROM Material'
             #Executa o comando na base de dados 
             cursor.execute(comando)
@@ -227,7 +227,7 @@ def vizualizar_na_bd(usuario:str):
             print("Ação realizada com sucesso.")
         
         #Vizualizando informações da venda na base de dados
-        if usuario == 'Venda':
+        if 'Venda' in selec_table:
             comando = f'SELECT * FROM VENDA'
             #Executa o comando na base de dados 
             cursor.execute(comando)

@@ -31,23 +31,23 @@ def inicio() :
     #Inserindo funcionario na base de dados
     if "Inserir" in opcao and "Funcionário" in opcao_tipo:
         funcionario = coletar_info_func()
-        Banco_de_dados.inserir_na_bd(funcionario)
+        Banco_de_dados.inserir_na_bd("Funcionário",funcionario)
     #Inserindo cliente na base de dados
     if "Inserir" in opcao and "Cliente" in opcao_tipo:
         cliente = coletar_info_clien()
-        Banco_de_dados.inserir_na_bd(cliente)
+        Banco_de_dados.inserir_na_bd("Cliente",usuario=cliente)
     #Inserindo material na base de dados
     if "Inserir" in opcao and "Material" in opcao_tipo:
         material = coletar_info_mate()
-        Banco_de_dados.inserir_na_bd(material)
+        Banco_de_dados.inserir_na_bd("Material",usuario=material)
     #Inserindo venda na base de dados
     if "Inserir" in opcao and "Venda" in opcao_tipo:
         venda = coletar_info_venda()
-        Banco_de_dados.inserir_na_bd(venda)
+        Banco_de_dados.inserir_na_bd("Venda",usuario=venda)
     #Deletando funcionario na base de dados
     if "Deletar" in opcao and "Funcionário" in opcao_tipo:
         funcionario = input("Insira o CPF: ")
-        Banco_de_dados.deletar_na_bd("Funcionario",funcionario)
+        Banco_de_dados.deletar_na_bd( "Funcionário",funcionario)
     #Deletando cliente na base de dados
     if "Deletar" in opcao and "Cliente" in opcao_tipo:
         cliente = input("Insira o CPF: ")
@@ -62,7 +62,7 @@ def inicio() :
         Banco_de_dados.deletar_na_bd("Venda",venda)
     #Vizualizando Funcionário na base de dados
     if "Vizualizar" in opcao and "Funcionário" in opcao_tipo:
-        Banco_de_dados.vizualizar_na_bd("Funcionario")
+        Banco_de_dados.vizualizar_na_bd("Funcionário")
     #Vizualizando cliente na base de dados
     if "Vizualizar" in opcao and "Cliente" in opcao_tipo:
         Banco_de_dados.vizualizar_na_bd("Cliente")
@@ -79,56 +79,76 @@ def _data_hora() -> datetime:
     horario_BR = datetime.now(fuso_BR)
     return horario_BR.strftime('%d/%m/%y %H:%M:%S')
 
-def coletar_info_func() -> None:
-#Coletando informações do funcionário.
-    cadastrar_funcionario(
-        nome = input('Insira seu nome: '),
-        idade = int(input('Insira sua idade: ')),
-        cpf = input('Insira seu CPF: '),
-        telefone = input('Insira seu Telefone: '),
-        cargo = input('Insira seu Cargo: '),
-        endereco = input('Rua e Número da sua casa: '),
-    )
-def coletar_info_clien() -> None:
+def coletar_info_func() -> dict:
+    nome = input('Insira seu nome: ')
+    idade = int(input('Insira sua idade: '))
+    cpf = input('Insira seu CPF: ')
+    telefone = input('Insira seu Telefone: ')
+    cargo = input('Insira seu Cargo: ')
+    endereco = input('Rua e Número da sua casa: ')
+
+    funcionario = {
+        'nome': nome,
+        'idade': idade,
+        'cpf': cpf,
+        'telefone': telefone,
+        'cargo': cargo,
+        'endereco': endereco
+    }
+
+    return funcionario
+
+def coletar_info_clien() -> dict:
 #Coletando informações do Cliente.
-    cadastrar_cliente(
-        nome = input('Insira seu nome: '),
-        idade = int(input('Insira sua idade: ')),
-        cpf = input('Insira seu CPF: '),
-        telefone = input('Insira seu Telefone: '),
-        endereco = input('Rua e Número da sua casa: '),
-    )
-def coletar_info_venda() -> None:
+
+    nome = input('Insira seu nome: '),
+    idade = int(input('Insira sua idade: ')),
+    cpf = input('Insira seu CPF: '),
+    telefone = input('Insira seu Telefone: '),
+    endereco = input('Rua e Número da sua casa: '),
+
+    cliente = {
+        'nome': nome,
+        'idade': idade,
+        'cpf': cpf,
+        'telefone': telefone,
+        'endereco': endereco
+    }
+    return cliente
+
+def coletar_info_venda() -> dict:
 #Coletando informações da Venda.
-    cadastrar_venda(
-        nome = input('Nome do material vendido: '),
-        valor = float(input('Valor da venda: ')),
-        quantidade = float(input('Quantidade Vendida: ')),
-        data_hora = _data_hora()
-    )
-def coletar_info_mate() -> None: 
+
+    nome = input('Nome do material vendido: '),
+    valor = float(input('Valor da venda: ')),
+    quantidade = float(input('Quantidade Vendida: ')),
+    data_hora = _data_hora()
+
+    venda = {
+        "nome": nome,
+        "valor": valor,
+        "quantidade": quantidade,
+        "data_hora":data_hora,
+    }
+    return venda
+
+def coletar_info_mate() -> dict: 
 #Coletando informações do material.
-    cadastrar_material(
-        nome = input('Nome do material: '),
-        quantidade = int(input('Quantidade: ')),
-        valor = float(input('Valor da material: ')),
-    )
 
-#Funcao que realiza o cadastro de funcionarios na base de dados
-cadastrar_funcionario = lambda *args, **kwargs: print(kwargs) 
+    nome = input('Nome do material: '),
+    quantidade = int(input('Quantidade: ')),
+    valor = float(input('Valor da material: ')),
+    
+    material = {
+        "nome": nome,
+        "valor": valor,
+        "quantidade": quantidade
+    }
 
-#Funcao que realiza o cadastro de clientes na base de dados
-cadastrar_cliente = lambda *args, **kwargs : print(kwargs)
-
-#Funcao que realiza o cadastro de vendas na base de dados
-cadastrar_venda = lambda *args, **kwargs: print(kwargs)
-
-#Funcao que realiza o cadastro de materiais na base de dados
-cadastrar_material = lambda *args, **kwargs: print(kwargs)
+    return material
 
 #Caso a opcão seja selecionada, a função vai ser chamada e realizada
 if __name__=="__main__":
-
     """
 Os comandos comentados, são para criação da base de dados e das tabelas que serão utilizadas.
 Para aqueles que já executaram o código em sua máquina, deixem comentado para que não ocorra erro
@@ -142,4 +162,3 @@ das linhas abaixo.
 # sleep(2)
 # os.system("cls")
 inicio()
-os.system("cls")
