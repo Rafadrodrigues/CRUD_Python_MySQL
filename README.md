@@ -25,11 +25,4 @@
   Para inserir os dados na base de dados, primeiramente,é preciso criar as tabelas na ferramenta de manipulação do SGBD,
   utilizei o WorkBench, porém fica a escolha do usuário.
   
-  A criação das tabelas foram feitas manualmente no Worbench, sendo elas;
-  
-    table_cliente: columns = id_cliente, nome_cliente, endereco_cliente, email_cliente, cpf_cliente, telefone_cliente
-    table_colaborador: columns = id_colaborador, nome_cola, endereco_cola, email_cola, cpf_cola, telefone_cola, user_cola, senha_cola.
-    table_material: columns = id_material, nome_material, quantidade_material, preco_material, especificacao_material, dataFabricacao_material, fornecedor_material.
-    table_vendas: columns = id_vendas, data_vendas, valorTotal_vendas.
-  
   Este código foi construído no Windows 10 64x, não foi testado em Linux.
