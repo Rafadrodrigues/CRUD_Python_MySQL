@@ -4,6 +4,13 @@ import Banco_de_dados
 import pytz
 import os
 
+"""
+=============================ATENCAO==========================================================
+Esse projeto foi construído em um cenário fictício, onde uma empresa de Material de construção
+realiza alguns inserções no Banco de dados. Esse projeto foi criado de forma simples e com 
+intuito de fortalecer meus conhecimentos em Python e MySQL.
+"""
+
 #Função que vai representar as informaçoes ao usuário
 def inicio() :
     
@@ -93,7 +100,7 @@ def coletar_info_func() -> dict:
         'cpf': cpf,
         'telefone': telefone,
         'cargo': cargo,
-        'endereco': endereco
+        'endereco': endereco,
     }
 
     return funcionario
@@ -101,27 +108,27 @@ def coletar_info_func() -> dict:
 def coletar_info_clien() -> dict:
 #Coletando informações do Cliente.
 
-    nome = input('Insira seu nome: '),
-    idade = int(input('Insira sua idade: ')),
+    nome = input('Insira seu nome: ')
+    idade = int(input('Insira sua idade: '))
     cpf = input('Insira seu CPF: '),
-    telefone = input('Insira seu Telefone: '),
-    endereco = input('Rua e Número da sua casa: '),
+    telefone = input('Insira seu Telefone: ')
+    endereco = input('Rua e Número da sua casa: ')
 
     cliente = {
         'nome': nome,
         'idade': idade,
         'cpf': cpf,
         'telefone': telefone,
-        'endereco': endereco
+        'endereco': endereco,
     }
     return cliente
 
 def coletar_info_venda() -> dict:
 #Coletando informações da Venda.
 
-    nome = input('Nome do material vendido: '),
-    valor = float(input('Valor da venda: ')),
-    quantidade = float(input('Quantidade Vendida: ')),
+    nome = input('Nome do material vendido: ')
+    valor = float(input('Valor da venda: '))
+    quantidade = float(input('Quantidade Vendida: '))
     data_hora = _data_hora()
 
     venda = {
@@ -135,14 +142,14 @@ def coletar_info_venda() -> dict:
 def coletar_info_mate() -> dict: 
 #Coletando informações do material.
 
-    nome = input('Nome do material: '),
-    quantidade = int(input('Quantidade: ')),
-    valor = float(input('Valor da material: ')),
+    nome = input('Nome do material: ')
+    data_hora = _data_hora()
+    valor = float(input('Valor da material: '))
     
     material = {
         "nome": nome,
         "valor": valor,
-        "quantidade": quantidade
+        "data": data_hora,
     }
 
     return material

@@ -8,6 +8,7 @@ def criar_base():
         conexao = mysql.connector.connect(
             host='localhost', 
             user='root', 
+            password='**',
             )
     except:
         raise ValueError("Conexão não estabelecida.")
@@ -29,7 +30,7 @@ def iniciar_conexao():
         conexao = mysql.connector.connect(
             host='localhost', 
             user='root', 
-            password='88554663',
+            password='**',
             database = 'MATERIALCONSTRUCAO',
             )
         return conexao
@@ -101,9 +102,8 @@ def inserir_na_bd(selec_table,usuario:dict):
 
     #Realizando inserção dos dados do funcionario na base de dados
     if 'Funcionário' in selec_table:
-
         comando = f'INSERT INTO FUNCIONARIO (nome, idade, cpf, telefone, cargo, endereco) VALUES \
-        ("{usuario["nome"]}", {usuario["idade"]}, "{usuario["cpf"]}", "{usuario["telefone"]}","{usuario["cargo"]}", "{usuario["endereco"]}")'
+        ("{usuario["nome"]}", {usuario["idade"]}, "{usuario["cpf"]}", "{usuario["telefone"]}", "{usuario["cargo"]}", "{usuario["endereco"]}")'
         #Executa o comando na base de dados 
         cursor.execute(comando)
         # Atualiza o banco de dados
@@ -112,8 +112,8 @@ def inserir_na_bd(selec_table,usuario:dict):
 
     #Realizando inserção dos dados do Cliente na base de dados
     if 'Cliente' in selec_table:
-        comando = f'INSERT INTO CLIENTE (nome,idade,cpf,telefone,endereco) VALUES\
-        ("{usuario["nome"]}", {usuario["idade"]}, "{usuario["cpf"]}", "{usuario["telefone"]}","{usuario["endereco"]}")'
+        comando = f'INSERT INTO CLIENTE (nome, idade, cpf, telefone, endereco) VALUES \
+        ("{usuario["nome"]}", {usuario["idade"]}, "{usuario["cpf"]}", "{usuario["telefone"]}", "{usuario["endereco"]}")'
         #Executa o comando na base de dados 
         cursor.execute(comando)
         # Atualiza o banco de dados
@@ -122,8 +122,8 @@ def inserir_na_bd(selec_table,usuario:dict):
 
     #Realizando inserção dos dados do Material na base de dados
     if 'Material' in selec_table:
-        comando = f'INSERT INTO MATERIAL (nome,quantidade,valor) VALUES\
-        ("{usuario["nome"]}", {usuario["quantidade"]},{usuario["valor"]})'
+        comando = f'INSERT INTO MATERIAL (nome,data_hora,valor) VALUES\
+        ("{usuario["nome"]}", "{usuario["data"]}",{usuario["valor"]})'
         #Executa o comando na base de dados 
         cursor.execute(comando)
         # Atualiza o banco de dados
@@ -132,8 +132,8 @@ def inserir_na_bd(selec_table,usuario:dict):
 
     #Realizando inserção dos dados da Venda na base de dados
     if 'Venda' in selec_table:
-        comando = f'INSERT INTO VENDA (nome,valor,quantidade,data) VALUES\
-        ("{usuario["nome"]}", {usuario["valor"]}, {usuario["quantidade"]},"{usuario["data"]}")'
+        comando = f'INSERT INTO VENDA (nome,valor,quantidade) VALUES\
+        ("{usuario["nome"]}", {usuario["valor"]}, {usuario["quantidade"]})'
         #Executa o comando na base de dados 
         cursor.execute(comando)
         # Atualiza o banco de dados
@@ -153,7 +153,7 @@ def deletar_na_bd(selec_table:str, id:str):
 
     #Realizando remoção do funcionario na base de dados
     if 'Funcionário' in selec_table:
-        comando = f'DELETE FROM FUNCIONARIO WHERE IDFUNCIONARIO = "{id}"'
+        comando = f'DELETE FROM FUNCIONARIO WHERE CPF = "{id}"'
         #Executa o comando na base de dados 
         cursor.execute(comando)
         # Atualiza o banco de dados
@@ -162,7 +162,7 @@ def deletar_na_bd(selec_table:str, id:str):
 
     #Realizando a remoção do cliente na base de dados
     if 'Cliente' in selec_table :
-        comando = f'DELETE FROM CLIENTE WHERE IDCLIENTE = "{id}"'
+        comando = f'DELETE FROM CLIENTE WHERE CPF = "{id}"'
         #Executa o comando na base de dados 
         cursor.execute(comando)
         # Atualiza o banco de dados
@@ -171,7 +171,7 @@ def deletar_na_bd(selec_table:str, id:str):
 
     #Realizando a remoção do cliente na base de dados
     if 'Material' in selec_table:
-        comando = f'DELETE FROM Material WHERE IDMATERIAL = "{id}"'
+        comando = f'DELETE FROM Material WHERE NOME = "{id}"'
         #Executa o comando na base de dados 
         cursor.execute(comando)
         # Atualiza o banco de dados
@@ -180,7 +180,7 @@ def deletar_na_bd(selec_table:str, id:str):
 
     #Realizando a remoção do cliente na base de dados
     if 'Venda' in selec_table:
-        comando = f'DELETE FROM VENDA WHERE IDVENDA = "{id}"'
+        comando = f'DELETE FROM VENDA WHERE NOME = "{id}"'
         #Executa o comando na base de dados 
         cursor.execute(comando)
         # Atualiza o banco de dados
@@ -204,6 +204,9 @@ def vizualizar_na_bd(selec_table:str):
             comando = f'SELECT * FROM FUNCIONARIO'
             #Executa o comando na base de dados 
             cursor.execute(comando)
+            # ler o banco de dados
+            resultado = cursor.fetchall()
+            print(resultado)
             # Atualiza o banco de dados
             conexao.commit()
             print("Ação realizada com sucesso.")
@@ -213,6 +216,9 @@ def vizualizar_na_bd(selec_table:str):
             comando = f'SELECT * FROM CLIENTE'
             #Executa o comando na base de dados 
             cursor.execute(comando)
+            # ler o banco de dados
+            resultado = cursor.fetchall()
+            print(resultado)
             # Atualiza o banco de dados
             conexao.commit()
             print("Ação realizada com sucesso.")
@@ -222,6 +228,9 @@ def vizualizar_na_bd(selec_table:str):
             comando = f'SELECT * FROM Material'
             #Executa o comando na base de dados 
             cursor.execute(comando)
+            # ler o banco de dados
+            resultado = cursor.fetchall()
+            print(resultado)
             # Atualiza o banco de dados
             conexao.commit()
             print("Ação realizada com sucesso.")
@@ -231,6 +240,9 @@ def vizualizar_na_bd(selec_table:str):
             comando = f'SELECT * FROM VENDA'
             #Executa o comando na base de dados 
             cursor.execute(comando)
+            # ler o banco de dados
+            resultado = cursor.fetchall()
+            print(resultado)
             # Atualiza o banco de dados
             conexao.commit()
             print("Ação realizada com sucesso.")
