@@ -1,3 +1,5 @@
+Esse projeto foi construído em um cenário fictício, onde uma empresa de Material de construção realiza alguns inserções no Banco de dados. Esse projeto foi criado de forma simples e com intuito de fortalecer meus conhecimentos em Python e MySQL.
+
 # Ferramentas utilizadas.
 
   Para executar será preciso ter o python instalado em seu PC. 
@@ -21,8 +23,5 @@
     Extensão > Python > Instalar.
     
     Versão do Python instalada no meu computador - 3.10.8
-  
-  Para inserir os dados na base de dados, primeiramente,é preciso criar as tabelas na ferramenta de manipulação do SGBD,
-  utilizei o WorkBench, porém fica a escolha do usuário.
   
   Este código foi construído no Windows 10 64x, não foi testado em Linux.
