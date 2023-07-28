@@ -1,7 +1,7 @@
 <h1 align="center">🖥️ CRUD - Material de Construção. 🖥️</h1>
 
 <div align="center">
-<img src="https://user-images.githubusercontent.com/104935995/256580887-74d92fcd-1787-4b5e-8dac-f4d9c06f0df4.png" width="600px"/>
+<img src="https://github.com/Rafadrodrigues/CRUD_Python_MySQL/assets/104935995/c42e5385-96eb-4105-8055-deef209b9272" width="300px"/>
 </div>
 
  -------
@@ -9,6 +9,11 @@
 * Esse projeto foi construído em um cenário fictício, onde uma empresa de material de construção realiza inserções, coleta e removação na base de dados. Esse projeto foi criado de forma simples e com intuito de fortalecer meus conhecimentos em Python e MySQL.
 
 --------
+<div align="center">
+<img src="https://github.com/Rafadrodrigues/CRUD_Python_MySQL/assets/104935995/9e6a68fb-082e-47ae-adb1-d443bcfc0694" width="300px"/>
+</div>
+
+
 -------
  ### 🚀 Tecnologias 🚀
 Este é um projeto pessoal que utilizou das seguintes tecnologias:
