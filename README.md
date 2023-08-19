@@ -17,9 +17,9 @@
  ### 🚀 Modelo Relacional de Dados🚀
 Para realização desse modelo foi utilizado a ferramenta MySQL WorkBench 8.0 CE:
 <div align="center">
-<img src="https://github.com/Rafadrodrigues/CRUD_Python_MySQL/assets/104935995/c42e5385-96eb-4105-8055-deef209b9272" width="300px"/>
+<img src="https://github.com/Rafadrodrigues/CRUD_Python_MySQL/assets/104935995/5eac6460-c7fe-4497-8e1b-436a67fa37d4" width="700px"/>
 </div>
---------
+
 -------
  ### 🚀 Tecnologias 🚀
 Este é um projeto pessoal que utilizou das seguintes tecnologias:
