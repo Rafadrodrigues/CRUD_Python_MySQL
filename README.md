@@ -1,28 +1,51 @@
-# Ferramentas utilizadas.
+<h1 align="center">🖥️ CRUD - Material de Construção. 🖥️</h1>
 
-  Para executar será preciso ter o python instalado em seu PC. 
-  
-    Site para baixar o python:https://www.python.org/downloads/
-  
-  Baixando o MySQL:
-  
-    Site para baixar o MySQL:https://dev.mysql.com/downloads/installer/
-    
-  Após isso, vá ao local onde foi baixado o arquivo e comece o processo de instalação.
-  
-  Baixando o VSCODE:
-  
-    Site para baixar o VSCODE:https://code.visualstudio.com/download
+<div align="center">
+<img src="https://github.com/Rafadrodrigues/CRUD_Python_MySQL/assets/104935995/c42e5385-96eb-4105-8055-deef209b9272" width="300px"/>
+</div>
 
-  Após isso, vá ao local onde foi baixado o arquivo e comece o processo de instalação.
-  
-  Para esse executar esse código foi necessário apenas a extensão Python. A mesma pode ser instalada;
-  
-    Extensão > Python > Instalar.
-    
-    Versão do Python instalada no meu computador - 3.10.8
-  
-  Para inserir os dados na base de dados, primeiramente,é preciso criar as tabelas na ferramenta de manipulação do SGBD,
-  utilizei o WorkBench, porém fica a escolha do usuário.
-  
-  Este código foi construído no Windows 10 64x, não foi testado em Linux.
+ -------
+### 🎯 Contexto 🎯
+* Esse projeto foi construído em um cenário fictício, onde uma empresa de material de construção realiza inserções, coleta e removação na base de dados. Esse projeto foi criado de forma simples e com intuito de fortalecer meus conhecimentos em Python e MySQL.
+
+--------
+<div align="center">
+<img src="https://github.com/Rafadrodrigues/CRUD_Python_MySQL/assets/104935995/9e6a68fb-082e-47ae-adb1-d443bcfc0694" width="300px"/>
+</div>
+
+-------
+ ### 🚀 Modelo Relacional de Dados🚀
+Para realização desse modelo foi utilizado a ferramenta MySQL WorkBench 8.0 CE:
+<div align="center">
+<img src="https://github.com/Rafadrodrigues/CRUD_Python_MySQL/assets/104935995/5eac6460-c7fe-4497-8e1b-436a67fa37d4" width="700px"/>
+</div>
+
+-------
+ ### 🚀 Tecnologias 🚀
+Este é um projeto pessoal que utilizou das seguintes tecnologias:
+* ✔️ Python
+* ✔️ MySQL
+--------
+-------
+ ### 🛣 Como usar 🛣
+ ### Clone o repositorio
+$ git clone https://github.com/Rafadrodrigues/CRUD_Python_MySQL.git
+
+ ### Puxe o repositorio 
+$ cd CRUD_Python_MySQL
+
+--------
+
+-------
+ ### 👨‍💻 Desenvolvedor 👨‍💻
+* <a>https://github.com/Rafadrodrigues</a>
+
+--------
+
+-------
+ ### ⚠️Importante⚠️
+* Site para baixar o python:https://www.python.org/downloads/
+* Site para baixar o MySQL:https://dev.mysql.com/downloads/installer/
+* Site para baixar o VSCODE:https://code.visualstudio.com/download
+* Este código foi construído no Windows 10 64x, não foi testado em Linux.
+--------
