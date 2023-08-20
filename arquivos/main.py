@@ -19,7 +19,8 @@ def inicio() :
         "1 - Inserir\n" + 
         "2 - Deletar\n" +
         "3 - Vizualizar\n" + 
-        "4 - Sair" 
+        "4 - Atualizar\n" + 
+        "5 - Sair" 
         )
     opcao = input('Qual opção deseja? ')
     os.system("cls")
@@ -76,9 +77,10 @@ def inicio() :
     #Vizualizando material na base de dados
     if "Vizualizar" in opcao and "Material" in opcao_tipo:
         Banco_de_dados.vizualizar_na_bd("Material")
-    #Vizualizando venda na base de dados
+    #Atualizando venda na base de dados
     if "Vizualizar" in opcao and "Venda" in opcao_tipo:
         Banco_de_dados.vizualizar_na_bd("Venda")
+    #Atualizando venda na base de dados
 
 def _data_hora() -> datetime:
 #Coletando data e hora para servir de informaçao na venda

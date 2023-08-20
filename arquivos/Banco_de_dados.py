@@ -30,7 +30,7 @@ def iniciar_conexao():
         conexao = mysql.connector.connect(
             host='localhost', 
             user='root', 
-            password='**',
+            password='88554663',
             database = 'MATERIALCONSTRUCAO',
             )
         return conexao
@@ -54,7 +54,7 @@ def criar_tabelas():
         cpf VARCHAR(15) NOT NULL UNIQUE,
         telefone VARCHAR(15) NOT NULL,
         cargo VARCHAR(30) NOT NULL,
-        endereco VARCHAR(200)
+        endereco VARCHAR(200) NOT NULL
     )
     """
     cursor.execute(table_funcionario)
@@ -66,7 +66,7 @@ def criar_tabelas():
         idade INT NOT NULL,
         cpf VARCHAR(15) NOT NULL UNIQUE,
         telefone VARCHAR(15) NOT NULL,
-        endereco VARCHAR(200)
+        endereco VARCHAR(200) NOT NULL
     )
     """
     cursor.execute(table_cliente)
@@ -86,14 +86,17 @@ def criar_tabelas():
             IDVENDA INT PRIMARY KEY AUTO_INCREMENT,
             nome VARCHAR(100) NOT NULL,
             quantidade INT NOT NULL,
-            valor FLOAT(10,2) NOT NULL
+            valor FLOAT(10,2) NOT NULL,
+            Id_Cliente INT REFERENCES CLIENTE(IDCLIENTE) NOT NULL,
+            Id_funcionario INT REFERENCES FUNCIONARIO(IDFUNCIONARIO) NOT NULL,
+            Id_Material INT REFERENCES MATERIAL(IDMATERIAL) NOT NULL
         )
         """
     cursor.execute(table_venda)
     cursor.close()
     conexao.close()
     
-#Uma função generica, porque ela realiza inserção da base de dados de todos tipo disponível no programa
+#Inserindo na base de dados
 def inserir_na_bd(selec_table,usuario:dict):
     #Criando a uma conexao
     conexao = iniciar_conexao()
@@ -143,7 +146,7 @@ def inserir_na_bd(selec_table,usuario:dict):
     cursor.close()
     conexao.close()
 
-#Cancelando venda na base de dados
+#Cancelando na base de dados
 def deletar_na_bd(selec_table:str, id:str):
 
     #Criando a uma conexao
@@ -190,7 +193,7 @@ def deletar_na_bd(selec_table:str, id:str):
     cursor.close()
     conexao.close()
 
-#Consultando material na base de dados
+#Consultando na base de dados
 def vizualizar_na_bd(selec_table:str):
         
     #Para melhor vizualização, pode aprensentar informação com um dicionario
