@@ -1,23 +1,27 @@
 <h1 align="center">🖥️ CRUD - Material de Construção. 🖥️</h1>
 
 <div align="center">
-<img src="https://github.com/Rafadrodrigues/CRUD_Python_MySQL/assets/104935995/c42e5385-96eb-4105-8055-deef209b9272" width="300px"/>
+<img src="https://github.com/Rafadrodrigues/CRUD_Python_MySQL/assets/104935995/224832a9-a4ef-4c9b-8680-0f82d9b99f52" width="800px"/>
 </div>
 
  -------
 ### 🎯 Contexto 🎯
-* Esse projeto foi construído em um cenário fictício, onde uma empresa de material de construção realiza inserções, coleta e removação na base de dados. Esse projeto foi criado de forma simples e com intuito de fortalecer meus conhecimentos em Python e MySQL.
+* Esse projeto foi construído em um cenário fictício, onde uma empresa de material de construção realiza inserções, coleta e removação na base de dados. Criado de forma simples e com intuito de fortalecer meus conhecimentos em Python, MySQL e StreamLit.
 
 --------
 <div align="center">
-<img src="https://github.com/Rafadrodrigues/CRUD_Python_MySQL/assets/104935995/9e6a68fb-082e-47ae-adb1-d443bcfc0694" width="300px"/>
+<img src="https://github.com/Rafadrodrigues/CRUD_Python_MySQL/assets/104935995/074b50b5-e377-47fd-aadd-e66fdc0c4f37" width="800px"/>
+</div>
+
+<div align="center">
+<img src="https://github.com/Rafadrodrigues/CRUD_Python_MySQL/assets/104935995/7a492c8f-5089-4958-95e1-2d5df8455b09" width="800px"/>
 </div>
 
 -------
  ### 🚀 Modelo Relacional de Dados🚀
 Para realização desse modelo foi utilizado a ferramenta MySQL WorkBench 8.0 CE:
 <div align="center">
-<img src="https://github.com/Rafadrodrigues/CRUD_Python_MySQL/assets/104935995/5eac6460-c7fe-4497-8e1b-436a67fa37d4" width="700px"/>
+<img src="https://github.com/Rafadrodrigues/CRUD_Python_MySQL/assets/104935995/5eac6460-c7fe-4497-8e1b-436a67fa37d4" width="800px"/>
 </div>
 
 -------
@@ -25,6 +29,7 @@ Para realização desse modelo foi utilizado a ferramenta MySQL WorkBench 8.0 CE
 Este é um projeto pessoal que utilizou das seguintes tecnologias:
 * ✔️ Python
 * ✔️ MySQL
+* ✔️ Streamlit
 --------
 -------
  ### 🛣 Como usar 🛣
